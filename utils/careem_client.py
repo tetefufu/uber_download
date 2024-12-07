@@ -1,10 +1,7 @@
-import asyncio
 import aiohttp
 
 from datetime import datetime, timedelta
 import logging
-
-import requests
 
 from utils.date_utils import get_latest_monday
 from urllib.parse import quote
@@ -70,10 +67,7 @@ class CareemClient:
 
 
     async def get_trips(self, captain_id, cycle_number = 0):
-        url = f"{self.captain_url}/transaction/{captain_id}?cycleNumber=0&viewParams=%7B%22cycleIdx%22:%200%7D&viewType=cycle"
-        
-
-        # Encode the relevant part of the URL (the `viewParams` value)
+        logging.info(f'get_trips {captain_id=} {cycle_number=}')
         encoded_view_params = quote(f'{{"cycleIdx": {cycle_number}}}', safe=":")
         url = f"{self.captain_url}/transaction/{captain_id}?cycleNumber={cycle_number}&viewParams={encoded_view_params}&viewType=cycle"
         
@@ -89,20 +83,42 @@ class CareemClient:
                 response_data = await response.json()
                 logging.info(response_data)
 
-                transactions = response_data["verifiedEarningPromise"]["captainTransactions"]
+                # Save the message if it exists
+                message = response_data.get("message", None)
 
-                result = [
-                    {
-                        "transactionId": transaction["transactionId"],
-                        "captainName": response_data["verifiedEarningPromise"]["captainName"],
-                        "captainId": response_data["verifiedEarningPromise"]["captainId"],
-                        "countryName": response_data["verifiedEarningPromise"]["countryName"],
-                        "uuid": transaction["uuid"]
-                    }
-                    for transaction in transactions
-                ]
+                # Initialize the result with captain info
+                result = {
+                    "captainId": response_data.get("verifiedEarningPromise", {}).get("captainId", None),
+                    "captainName": response_data.get("verifiedEarningPromise", {}).get("captainName", None),
+                    "countryName": response_data.get("verifiedEarningPromise", {}).get("countryName", None),
+                    "message": message
+                }
 
-                return result
+                # Get transactions, or return a list with one default item if not present
+                transactions = response_data.get("verifiedEarningPromise", {}).get("captainTransactions", [])
+
+                if transactions:
+                    result["transactions"] = [
+                        {
+                            "transactionId": transaction.get("transactionId", None),
+                            "captainName": result["captainName"],  # Using already fetched captainName
+                            "captainId": result["captainId"],      # Using already fetched captainId
+                            "countryName": result["countryName"],  # Using already fetched countryName
+                            "uuid": transaction.get("uuid", None)
+                        }
+                        for transaction in transactions
+                    ]
+                else:
+                    # Return a list with 1 item containing default values
+                    result["transactions"] = [{
+                        "transactionId": None,
+                        "captainName": result["captainName"],
+                        "captainId": result["captainId"],
+                        "countryName": result["countryName"],
+                        "uuid": None
+                    }]
+
+                return result["transactions"]    
 
 
     async def get_drivers(self):

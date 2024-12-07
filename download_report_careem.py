@@ -24,7 +24,7 @@ async def get_captain_ids():
 async def get_trips(drivers):
     extended_trips = []
     
-    driver_tasks = [client.get_trips(driver) for driver in drivers]
+    driver_tasks = [client.get_trips(driver, number) for driver in drivers for number in range(config['report_start_from'])]
     driver_trips = await asyncio.gather(*driver_tasks)
 
     detail_tasks = []
