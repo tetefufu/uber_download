@@ -7,6 +7,7 @@ import logging
 import requests
 
 from utils.date_utils import get_latest_monday
+from urllib.parse import quote
 
 
 class CareemClient:
@@ -30,7 +31,7 @@ class CareemClient:
         else:
             start_date = get_latest_monday()
 
-        tomorrow = now + timedelta(days=0)
+        tomorrow = now + timedelta(days=1)
         end_date = tomorrow.replace(hour=0, minute=0, second=0, microsecond=0)
 
         start_time_unix_millis = int(start_date.timestamp() * 1000)
@@ -68,9 +69,14 @@ class CareemClient:
                 return flat_json
 
 
-    async def get_trips(self, captain_id):
+    async def get_trips(self, captain_id, cycle_number = 0):
         url = f"{self.captain_url}/transaction/{captain_id}?cycleNumber=0&viewParams=%7B%22cycleIdx%22:%200%7D&viewType=cycle"
+        
 
+        # Encode the relevant part of the URL (the `viewParams` value)
+        encoded_view_params = quote(f'{{"cycleIdx": {cycle_number}}}', safe=":")
+        url = f"{self.captain_url}/transaction/{captain_id}?cycleNumber={cycle_number}&viewParams={encoded_view_params}&viewType=cycle"
+        
         self.headers = {
             "accept": "application/json, text/plain, */*",
             "authcaptainid": str(captain_id),
@@ -101,11 +107,12 @@ class CareemClient:
 
     async def get_drivers(self):
         start_time_unix_millis, end_time_unix_millis, start_date_str, end_date_str = self.get_dates()
+        logging.info(f"Gettings driver")
 
         url = self.url + "/limo/portal/captain/acceptance/477236"
         params = {
-            "startTime": "1733011200000",
-            "endTime": "1733356799000"
+            "startTime": str(start_time_unix_millis),
+            "endTime": str(end_time_unix_millis)
         }
 
         async with aiohttp.ClientSession(headers=self.headers) as session:
