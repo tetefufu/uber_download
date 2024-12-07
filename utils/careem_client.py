@@ -53,9 +53,16 @@ class CareemClient:
         response_data = response.json()
         logging.info(response_data)
 
-        
+        flat_json = {}
+        for section in response_data.get("data", {}).get("sections", []):
+            for line in section.get("lines", []):
+                left = line.get("left")
+                right = line.get("right")
+                
+                if left and right:
+                    flat_json[left] = right
 
-        return None
+        return flat_json
 
 
     def get_trips(self, captain_id):
@@ -73,12 +80,13 @@ class CareemClient:
         logging.info(response_data)
 
         transactions = response_data["verifiedEarningPromise"]["captainTransactions"]
-        captain_name = response_data["verifiedEarningPromise"]["captainName"]
 
         result = [
             {
                 "transactionId": transaction["transactionId"],
-                "captainName": captain_name,
+                "captainName": response_data["verifiedEarningPromise"]["captainName"],
+                "captainId": response_data["verifiedEarningPromise"]["captainId"],
+                "countryName": response_data["verifiedEarningPromise"]["countryName"],
                 "uuid": transaction["uuid"]
             }
             for transaction in transactions
