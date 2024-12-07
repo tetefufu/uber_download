@@ -63,3 +63,6 @@ Thumbs.db
 
 # credentials
 curl.txt
+
+# exe
+*.spec

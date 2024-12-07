@@ -1,4 +1,3 @@
-
 <p align="center">
   <a href="https://github.com/othneildrew/Best-README-Template">
     <img src="images/logo.png" alt="Logo" width="80" height="80">
@@ -10,4 +9,12 @@
     Ability to download uber reports automatically
     
   </p>
+
+```
+
 pyinstaller --onefile download_report.py
+
+pyinstaller --onefile download_report_careem.py
+
+
+```

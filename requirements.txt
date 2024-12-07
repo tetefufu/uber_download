@@ -1,3 +1,5 @@
 requests
 pyinstaller
 pyyaml
+aiohttp
+flatten_json
