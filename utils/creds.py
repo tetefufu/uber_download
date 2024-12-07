@@ -35,7 +35,7 @@ def extract_bearer_token():
             content = file.read()
             
         # Use regex to find the Bearer token
-        match = re.search(r'Authorization: Bearer\s+([\w\.-]+)', content)
+        match = re.search(r'(?:Authorization|authorization|authtoken): Bearer\s+([\w\.-]+)', content)
         if match:
             return match.group(1)
         else:
