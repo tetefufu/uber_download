@@ -5,6 +5,7 @@ import logging
 
 from utils.date_utils import get_latest_monday
 from urllib.parse import quote
+from flatten_json import flatten
 
 
 class CareemClient:
@@ -55,6 +56,10 @@ class CareemClient:
                 logging.info(response_data)
 
                 flat_json = {}
+                flat_json['tripDate'] = response_data.get('tripDate', None)
+                flat_json['earnings'] = response_data.get('earnings', None)
+                flat_json['carInfo'] = response_data.get('carInfo', None)
+                flat_json['meta'] = response_data.get('meta', None)
                 for section in response_data.get("data", {}).get("sections", []):
                     for line in section.get("lines", []):
                         left = line.get("left")
@@ -79,46 +84,51 @@ class CareemClient:
         
         async with aiohttp.ClientSession(headers=self.headers) as session:
             async with session.get(url) as response:
+                def filter_out_lists_recursive(json_data):
+                    """
+                    Recursively filter out all list fields from the JSON data.
+                    
+                    Args:
+                    - json_data (dict): The input JSON object.
+                    
+                    Returns:
+                    - dict: The filtered JSON with lists removed.
+                    """
+                    if isinstance(json_data, dict):
+                        # Iterate through dictionary items and recursively filter out lists
+                        return {key: filter_out_lists_recursive(value) for key, value in json_data.items() if not isinstance(value, list)}
+                    elif isinstance(json_data, list):
+                        # If the value is a list, return an empty list to exclude it
+                        return []
+                    else:
+                        # For non-dictionary and non-list values, just return the value
+                        return json_data
+
+
                 response.raise_for_status()
                 response_data = await response.json()
                 logging.info(response_data)
 
-                # Save the message if it exists
-                message = response_data.get("message", None)
+                filtered_data = filter_out_lists_recursive(response_data)
+
+                # Flatten the filtered JSON
+                flat_json = flatten(filtered_data)
+                flat_json["transactionId"] = "None"
 
                 # Initialize the result with captain info
-                result = {
-                    "captainId": response_data.get("verifiedEarningPromise", {}).get("captainId", None),
-                    "captainName": response_data.get("verifiedEarningPromise", {}).get("captainName", None),
-                    "countryName": response_data.get("verifiedEarningPromise", {}).get("countryName", None),
-                    "message": message
-                }
+                result = flat_json
 
                 # Get transactions, or return a list with one default item if not present
                 transactions = response_data.get("verifiedEarningPromise", {}).get("captainTransactions", [])
 
                 if transactions:
-                    result["transactions"] = [
-                        {
-                            "transactionId": transaction.get("transactionId", None),
-                            "captainName": result["captainName"],  # Using already fetched captainName
-                            "captainId": result["captainId"],      # Using already fetched captainId
-                            "countryName": result["countryName"],  # Using already fetched countryName
-                            "uuid": transaction.get("uuid", None)
-                        }
-                        for transaction in transactions
-                    ]
-                else:
-                    # Return a list with 1 item containing default values
-                    result["transactions"] = [{
-                        "transactionId": None,
-                        "captainName": result["captainName"],
-                        "captainId": result["captainId"],
-                        "countryName": result["countryName"],
-                        "uuid": None
-                    }]
+                    result = []
+                    for transaction in transactions:
+                        transaction_no_lists = filter_out_lists_recursive(transaction)
+                        result.append({**flat_json, **transaction_no_lists})
+                    return result
 
-                return result["transactions"]    
+                return [flat_json]
 
 
     async def get_drivers(self):
