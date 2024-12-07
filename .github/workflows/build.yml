@@ -33,9 +33,15 @@ jobs:
       - name: Build executable
         run: pyinstaller --onefile download_report_careem.py
 
+      - name: Print current working directory
+        run: pwd
+
       # Upload artifact
       - name: Upload artifact
         uses: actions/upload-artifact@v3
         with:
           name: executable
           path: dist/download_report_careem.exe
+
+      - name: Print current working directory
+        run: pwd
