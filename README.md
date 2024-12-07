@@ -1,20 +1,19 @@
-<p align="center">
-  <a href="https://github.com/othneildrew/Best-README-Template">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
-  </a>
+## Uber Downloader
 
-  <h3 align="center">Uber Downloader</h3>
+Ability to download Uber reports automatically
 
-  <p align="center">
-    Ability to download uber reports automatically
-    
-  </p>
+### Commands to Build Executables
 
-```
-
+```bash
 pyinstaller --onefile download_report.py
-
 pyinstaller --onefile download_report_careem.py
-
-
 ```
+
+### Instructions
+
+config.yml
+
+For careem - start from number
+
+- 1 is min
+- 3 to go back 3 weeks
