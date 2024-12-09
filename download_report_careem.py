@@ -42,6 +42,23 @@ async def get_trips(drivers):
     return extended_trips
 
 
+async def get_trips_sync(drivers):
+    driver_trips = []
+    for driver in drivers:
+        for number in range(config['report_start_from']):
+            driver_trips.extend(await client.get_trips(driver, number))
+
+    return driver_trips
+
+
+async def get_trips_details_sync(trips):
+    driver_trips = []
+    for trip in trips:
+        driver_trips.append(await client.get_trip_detail(trip))
+
+    return driver_trips
+
+
 def save_file(list_of_dicts, filepath):
     logging.info(f"saving {filepath}")
     if not list_of_dicts:
@@ -61,12 +78,13 @@ def save_file(list_of_dicts, filepath):
 
 async def main():
     captain_ids = await get_captain_ids()
-    trips = await get_trips(captain_ids)
+    trips = await get_trips_sync(captain_ids)
+    trips_details = await get_trips_details_sync(trips)
 
     filename = f"{datetime.now().strftime('%Y%m%d_%H%M')}_careem_downloader"
     base_path = config['output_folder']
     full_path = os.path.join(base_path, filename) + ".csv"
-    save_file(trips, full_path)
+    save_file(trips_details, full_path)
 
 
 if __name__ == "__main__":

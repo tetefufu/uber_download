@@ -69,6 +69,39 @@ class CareemClient:
                             flat_json[left] = right
 
                 return flat_json
+            
+
+    async def get_trip_detail(self, trip):
+        captain_id = trip['captainProfile_captainProfileDto_captainId']
+        trip_id = trip['transactionId']
+        url = f"{self.captain_url}/trip-receipt/{trip_id}/en"
+        self.headers = {
+            "accept": "application/json, text/plain, */*",
+            "authcaptainid": str(captain_id),
+            "authtoken": f"Bearer {self.bearer_token}",
+        }
+        logging.info(f"{url=} {captain_id=} {trip_id=}")
+        
+        async with aiohttp.ClientSession(headers=self.headers) as session:
+            async with session.get(url) as response:
+                response.raise_for_status()
+                response_data = await response.json()
+                logging.info(response_data)
+
+                flat_json = {}
+                flat_json['tripDate'] = response_data.get('tripDate', None)
+                flat_json['earnings'] = response_data.get('earnings', None)
+                flat_json['carInfo'] = response_data.get('carInfo', None)
+                flat_json['meta'] = response_data.get('meta', None)
+                for section in response_data.get("data", {}).get("sections", []):
+                    for line in section.get("lines", []):
+                        left = line.get("left")
+                        right = line.get("right")
+                        
+                        if left and right:
+                            flat_json[left] = right
+
+                return {**flat_json, **trip}
 
 
     async def get_trips(self, captain_id, cycle_number = 0):

@@ -1,10 +1,17 @@
 import logging
 
+logging.basicConfig(
+    filename='app.log',  # Use a file for logs
+    filemode='w',
+    encoding='utf-8',    # Set UTF-8 encoding
+    level=logging.INFO
+)
+
 
 logger = logging.getLogger()
 logger.setLevel(logging.DEBUG)
 
-file_handler = logging.FileHandler('app.log')
+file_handler = logging.FileHandler('app.log', encoding='utf-8')
 file_handler.setLevel(logging.DEBUG)  # Log all messages to the file
 
 stream_handler = logging.StreamHandler()
