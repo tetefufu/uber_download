@@ -20,6 +20,26 @@ class CareemClient:
         self.org_id = org_id
         self.start_from = start_from
 
+    def filter_out_lists_recursive(self, json_data):
+        """
+        Recursively filter out all list fields from the JSON data.
+        
+        Args:
+        - json_data (dict): The input JSON object.
+        
+        Returns:
+        - dict: The filtered JSON with lists removed.
+        """
+        if isinstance(json_data, dict):
+            # Iterate through dictionary items and recursively filter out lists
+            return {key: self.filter_out_lists_recursive(value) for key, value in json_data.items() if not isinstance(value, list)}
+        elif isinstance(json_data, list):
+            # If the value is a list, return an empty list to exclude it
+            return []
+        else:
+            # For non-dictionary and non-list values, just return the value
+            return json_data
+
     def get_dates(self):
         now = datetime.now()
 
@@ -41,36 +61,6 @@ class CareemClient:
         return start_time_unix_millis, end_time_unix_millis, start_date_str, end_date_str
 
 
-    async def get_trip_details(self, trip_id, captain_id):
-        url = f"{self.captain_url}/trip-receipt/{trip_id}/en"
-        self.headers = {
-            "accept": "application/json, text/plain, */*",
-            "authcaptainid": str(captain_id),
-            "authtoken": f"Bearer {self.bearer_token}",
-        }
-        
-        async with aiohttp.ClientSession(headers=self.headers) as session:
-            async with session.get(url) as response:
-                response.raise_for_status()
-                response_data = await response.json()
-                logging.info(response_data)
-
-                flat_json = {}
-                flat_json['tripDate'] = response_data.get('tripDate', None)
-                flat_json['earnings'] = response_data.get('earnings', None)
-                flat_json['carInfo'] = response_data.get('carInfo', None)
-                flat_json['meta'] = response_data.get('meta', None)
-                for section in response_data.get("data", {}).get("sections", []):
-                    for line in section.get("lines", []):
-                        left = line.get("left")
-                        right = line.get("right")
-                        
-                        if left and right:
-                            flat_json[left] = right
-
-                return flat_json
-            
-
     async def get_trip_detail(self, trip):
         captain_id = trip['captainProfile_captainProfileDto_captainId']
         trip_id = trip['transactionId']
@@ -84,32 +74,12 @@ class CareemClient:
         
         async with aiohttp.ClientSession(headers=self.headers) as session:
             async with session.get(url) as response:
-                def filter_out_lists_recursive(json_data):
-                    """
-                    Recursively filter out all list fields from the JSON data.
-                    
-                    Args:
-                    - json_data (dict): The input JSON object.
-                    
-                    Returns:
-                    - dict: The filtered JSON with lists removed.
-                    """
-                    if isinstance(json_data, dict):
-                        # Iterate through dictionary items and recursively filter out lists
-                        return {key: filter_out_lists_recursive(value) for key, value in json_data.items() if not isinstance(value, list)}
-                    elif isinstance(json_data, list):
-                        # If the value is a list, return an empty list to exclude it
-                        return []
-                    else:
-                        # For non-dictionary and non-list values, just return the value
-                        return json_data
-
                 response.raise_for_status()
                 response_data = await response.json()
                 logging.info(response_data)
 
                 flat_json = {}
-                filtered_data = filter_out_lists_recursive(response_data)
+                filtered_data = self.filter_out_lists_recursive(response_data)
                 flat_all = flatten(filtered_data)
 
                 for section in response_data.get("data", {}).get("sections", []):
@@ -136,32 +106,11 @@ class CareemClient:
         
         async with aiohttp.ClientSession(headers=self.headers) as session:
             async with session.get(url) as response:
-                def filter_out_lists_recursive(json_data):
-                    """
-                    Recursively filter out all list fields from the JSON data.
-                    
-                    Args:
-                    - json_data (dict): The input JSON object.
-                    
-                    Returns:
-                    - dict: The filtered JSON with lists removed.
-                    """
-                    if isinstance(json_data, dict):
-                        # Iterate through dictionary items and recursively filter out lists
-                        return {key: filter_out_lists_recursive(value) for key, value in json_data.items() if not isinstance(value, list)}
-                    elif isinstance(json_data, list):
-                        # If the value is a list, return an empty list to exclude it
-                        return []
-                    else:
-                        # For non-dictionary and non-list values, just return the value
-                        return json_data
-
-
                 response.raise_for_status()
                 response_data = await response.json()
                 logging.info(response_data)
 
-                filtered_data = filter_out_lists_recursive(response_data)
+                filtered_data = self.filter_out_lists_recursive(response_data)
 
                 # Flatten the filtered JSON
                 flat_json = flatten(filtered_data)
@@ -176,7 +125,7 @@ class CareemClient:
                 if transactions:
                     result = []
                     for transaction in transactions:
-                        transaction_no_lists = filter_out_lists_recursive(transaction)
+                        transaction_no_lists = self.filter_out_lists_recursive(transaction)
                         result.append({**flat_json, **transaction_no_lists})
                     return result
 
