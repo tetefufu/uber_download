@@ -84,15 +84,34 @@ class CareemClient:
         
         async with aiohttp.ClientSession(headers=self.headers) as session:
             async with session.get(url) as response:
+                def filter_out_lists_recursive(json_data):
+                    """
+                    Recursively filter out all list fields from the JSON data.
+                    
+                    Args:
+                    - json_data (dict): The input JSON object.
+                    
+                    Returns:
+                    - dict: The filtered JSON with lists removed.
+                    """
+                    if isinstance(json_data, dict):
+                        # Iterate through dictionary items and recursively filter out lists
+                        return {key: filter_out_lists_recursive(value) for key, value in json_data.items() if not isinstance(value, list)}
+                    elif isinstance(json_data, list):
+                        # If the value is a list, return an empty list to exclude it
+                        return []
+                    else:
+                        # For non-dictionary and non-list values, just return the value
+                        return json_data
+
                 response.raise_for_status()
                 response_data = await response.json()
                 logging.info(response_data)
 
                 flat_json = {}
-                flat_json['tripDate'] = response_data.get('tripDate', None)
-                flat_json['earnings'] = response_data.get('earnings', None)
-                flat_json['carInfo'] = response_data.get('carInfo', None)
-                flat_json['meta'] = response_data.get('meta', None)
+                filtered_data = filter_out_lists_recursive(response_data)
+                flat_all = flatten(filtered_data)
+
                 for section in response_data.get("data", {}).get("sections", []):
                     for line in section.get("lines", []):
                         left = line.get("left")
@@ -101,7 +120,7 @@ class CareemClient:
                         if left and right:
                             flat_json[left] = right
 
-                return {**flat_json, **trip}
+                return {**flat_all, **flat_json, **trip}
 
 
     async def get_trips(self, captain_id, cycle_number = 0):

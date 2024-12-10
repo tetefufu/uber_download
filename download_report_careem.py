@@ -1,5 +1,4 @@
 import asyncio
-import aiohttp
 import csv
 from datetime import datetime
 import logging
@@ -19,27 +18,6 @@ client = CareemClient(org_id=1, start_from=config['report_start_from'], bearer_t
 async def get_captain_ids():
     captain_ids = await client.get_drivers()
     return captain_ids
-
-
-async def get_trips(drivers):
-    extended_trips = []
-    
-    driver_tasks = [client.get_trips(driver, number) for driver in drivers for number in range(config['report_start_from'])]
-    driver_trips = await asyncio.gather(*driver_tasks)
-
-    detail_tasks = []
-    for driver, trips in zip(drivers, driver_trips):
-        for trip in trips:
-            task = client.get_trip_details(trip['transactionId'], driver)
-            detail_tasks.append((trip, task))
-
-    detail_results = await asyncio.gather(*[task for _, task in detail_tasks])
-
-    for (trip, detail) in zip((t for trips in driver_trips for t in trips), detail_results):
-        extended_trip = {**trip, **detail}
-        extended_trips.append(extended_trip)
-
-    return extended_trips
 
 
 async def get_trips_sync(drivers):
@@ -62,7 +40,6 @@ async def get_trips_async(drivers):
 
     driver_trips = [trip for result in results for trip in result]
     return driver_trips
-
 
 
 async def get_trips_details_sync(trips):
