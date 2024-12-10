@@ -51,10 +51,31 @@ async def get_trips_sync(drivers):
     return driver_trips
 
 
+async def get_trips_async(drivers):
+    tasks = [
+        client.get_trips(driver, number)
+        for driver in drivers
+        for number in range(config['report_start_from'])
+    ]
+    
+    results = await asyncio.gather(*tasks)
+
+    driver_trips = [trip for result in results for trip in result]
+    return driver_trips
+
+
+
 async def get_trips_details_sync(trips):
     driver_trips = []
     for trip in trips:
         driver_trips.append(await client.get_trip_detail(trip))
+
+    return driver_trips
+
+
+async def get_trips_details_async(trips):
+    tasks = [client.get_trip_detail(trip) for trip in trips]
+    driver_trips = await asyncio.gather(*tasks)
 
     return driver_trips
 
@@ -64,10 +85,15 @@ def save_file(list_of_dicts, filepath):
     if not list_of_dicts:
         raise ValueError("The list of dictionaries is empty.")
 
-    header = set()
+    header = []
+    seen_keys = set()
+
     for dictionary in list_of_dicts:
-        header.update(dictionary.keys())
-    header = list(header)
+        for key in dictionary.keys():
+            if key not in seen_keys:
+                header.append(key)
+                seen_keys.add(key)
+
 
     with open(filepath, mode='w', newline='', encoding='utf-8') as file:
         writer = csv.DictWriter(file, fieldnames=header)
@@ -78,8 +104,8 @@ def save_file(list_of_dicts, filepath):
 
 async def main():
     captain_ids = await get_captain_ids()
-    trips = await get_trips_sync(captain_ids)
-    trips_details = await get_trips_details_sync(trips)
+    trips = await get_trips_async(captain_ids)
+    trips_details = await get_trips_details_async(trips)
 
     filename = f"{datetime.now().strftime('%Y%m%d_%H%M')}_careem_downloader"
     base_path = config['output_folder']
