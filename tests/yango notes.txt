@@ -1,0 +1,344 @@
+reports > transactions > range > download 
+	post 
+	status 
+	download 
+reports > payouts > 
+	do we need payout? or just transaction 
+	
+
+
+curl 'https://fleet.yango.com/api/v1/reports/transactions/park/download-async?operation_id=ba746b251a80468bb2c87bb87c607c96' \
+  -H 'Accept: */*' \
+  -H 'Accept-Language: en-US,en;q=0.9' \
+  -H 'Connection: keep-alive' \
+  -H 'Content-Type: application/json' \
+  -H 'Cookie: _gcl_gs=
+  -H 'Origin: https://fleet.yango.com' \
+  -H 'Referer: https://fleet.yango.com/reports/transactions/list?from=2024-12-12T00%3A00%3A00.000&to=2024-12-20T23%3A59%3A59.999&without_cash=true&park_id=c5cf968c4c2f4bbc947c8c0703b7e124' \
+  -H 'Sec-Fetch-Dest: empty' \
+  -H 'Sec-Fetch-Mode: cors' \
+  -H 'Sec-Fetch-Site: same-origin' \
+  -H 'User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36' \
+  -H 'X-Client-Version: fleet/13631' \
+  -H 'X-Park-Id: c5cf968c4c2f4bbc947c8c0703b7e124' \
+  -H 'sec-ch-ua: "Google Chrome";v="131", "Chromium";v="131", "Not_A Brand";v="24"' \
+  -H 'sec-ch-ua-mobile: ?0' \
+  -H 'sec-ch-ua-platform: "Windows"' \
+  --data-raw '{"query":{"park":{"transaction":{"event_at":{"from":"2024-12-12T00:00:00.000+04:00","to":"2024-12-21T00:00:00.000+04:00"},"without_cash":true}}},"charset":"utf-8-sig"}'
+  
+---
+
+payouts 
+
+curl 'https://fleet.yango.com/api/fleet/fleet-payouts-web/v2/payouts/list' \
+  -H 'Accept: */*' \
+  -H 'Accept-Language: en-US,en;q=0.9' \
+  -H 'Connection: keep-alive' \
+  -H 'Content-Type: application/json' \
+  -H 'Cookie: _gcl_gs=
+  -H 'Language: en' \
+  -H 'Origin: https://fleet.yango.com' \
+  -H 'Referer: https://fleet.yango.com/reports/payouts?park_id=c5cf968c4c2f4bbc947c8c0703b7e124&date_from=2024-11-20&date_to=2024-12-21&statuses=created%2Ctransmitted%2Cpaid&tab=payouts&lang=en&theme=day' \
+  -H 'Sec-Fetch-Dest: empty' \
+  -H 'Sec-Fetch-Mode: cors' \
+  -H 'Sec-Fetch-Site: same-origin' \
+  -H 'User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36' \
+  -H 'X-Client-Version: fleet/13631' \
+  -H 'X-Park-Id: c5cf968c4c2f4bbc947c8c0703b7e124' \
+  -H 'sec-ch-ua: "Google Chrome";v="131", "Chromium";v="131", "Not_A Brand";v="24"' \
+  -H 'sec-ch-ua-mobile: ?0' \
+  -H 'sec-ch-ua-platform: "Windows"' \
+  --data-raw '{"limit":25,"status":["created","transmitted","paid"],"payment_at":{"from":"2024-11-20","to":"2024-12-21"}}'
+  
+{
+    "payments": [
+        {
+            "id": "bfp%2Foebs%2F1739199124",
+            "order_number": "1913",
+            "status": "paid",
+            "can_confirm": true,
+            "creation_date": "2024-12-02T23:27:54+0000",
+            "event_at": "2024-12-02T23:27:54+00:00",
+            "bank_account_number": "AE450260001015858828101",
+            "payment_target": "Payment under the Agreement OF-10087919/23 180.75aed, Payment under the Agreement 10087919/23 2197.35aed",
+            "amount": "2378.1",
+            "currency": "AED"
+        }
+    ]
+}
+
+---
+
+curl 'https://fleet.yango.com/api/fleet/reports-builder/report/payouts?operation_id=f002d7453def41acb909443e0bad9895' \
+  -H 'Accept: */*' \
+  -H 'Accept-Language: en-US,en;q=0.9' \
+  -H 'Connection: keep-alive' \
+  -H 'Cookie: _gcl_gs=
+  -H 'Origin: https://fleet.yango.com' \
+  -H 'Referer: https://fleet.yango.com/reports/payouts?park_id=c5cf968c4c2f4bbc947c8c0703b7e124&date_from=2024-11-20&date_to=2024-12-21&statuses=created%2Ctransmitted%2Cpaid&tab=payouts&lang=en&theme=day' \
+  -H 'Sec-Fetch-Dest: empty' \
+  -H 'Sec-Fetch-Mode: cors' \
+  -H 'Sec-Fetch-Site: same-origin' \
+  -H 'User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36' \
+  -H 'X-Client-Version: fleet/13631' \
+  -H 'accept-file-charset: utf-8-sig' \
+  -H 'content-type: application/json' \
+  -H 'language: en' \
+  -H 'sec-ch-ua: "Google Chrome";v="131", "Chromium";v="131", "Not_A Brand";v="24"' \
+  -H 'sec-ch-ua-mobile: ?0' \
+  -H 'sec-ch-ua-platform: "Windows"' \
+  -H 'x-park-id: c5cf968c4c2f4bbc947c8c0703b7e124' \
+  --data-raw '{"locale":"en","payment_at_from":"2024-11-20T00:00:00+04:00","payment_at_to":"2024-12-22T00:00:00+04:00","statuses":["created","transmitted","paid"],"park_tz_id":"Asia/Dubai","park_clid":"400001783251"}'
+  
+curl 'https://fleet.yango.com/api/fleet/reports-storage/v1/operations/status?operation_id=f002d7453def41acb909443e0bad9895' \
+  -H 'Accept: */*' \
+  -H 'Accept-Language: en-US,en;q=0.9' \
+  -H 'Connection: keep-alive' \
+  -H 'Sec-Fetch-Dest: empty' \
+  -H 'Sec-Fetch-Mode: cors' \
+  -H 'Sec-Fetch-Site: same-origin' \
+  -H 'User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36' \
+  -H 'X-Client-Version: fleet/13631' \
+  -H 'X-Park-Id: c5cf968c4c2f4bbc947c8c0703b7e124' \
+  -H 'sec-ch-ua: "Google Chrome";v="131", "Chromium";v="131", "Not_A Brand";v="24"' \
+  -H 'sec-ch-ua-mobile: ?0' \
+  -H 'sec-ch-ua-platform: "Windows"'
+  
+{"status":"new"}
+{"status":"uploaded"}
+
+curl 'https://fleet.yango.com/api/fleet/reports-storage/v1/operations/download?operation_id=f002d7453def41acb909443e0bad9895' \
+  -H 'Accept: */*' \
+  -H 'Accept-Language: en-US,en;q=0.9' \
+  -H 'Connection: keep-alive' \
+  -H 'Referer: https://fleet.yango.com/reports/payouts?park_id=c5cf968c4c2f4bbc947c8c0703b7e124&date_from=2024-11-20&date_to=2024-12-21&statuses=created%2Ctransmitted%2Cpaid&tab=payouts&lang=en&theme=day' \
+  -H 'Sec-Fetch-Dest: empty' \
+  -H 'Sec-Fetch-Mode: cors' \
+  -H 'Sec-Fetch-Site: same-origin' \
+  -H 'User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36' \
+  -H 'X-Client-Version: fleet/13631' \
+  -H 'X-Park-Id: c5cf968c4c2f4bbc947c8c0703b7e124' \
+  -H 'sec-ch-ua: "Google Chrome";v="131", "Chromium";v="131", "Not_A Brand";v="24"' \
+  -H 'sec-ch-ua-mobile: ?0' \
+  -H 'sec-ch-ua-platform: "Windows"'
+
+{
+    "file_name": "report_payout_details.csv",
+    "link": "https://fleet-reports-storage.s3-private.mds.yandex.net/tmp/f002d7453def41acb909443e0bad9895?AWSAccessKeyId=hcAZ1OG0XNuZ3UmhBySI&Signature=raVg61x8jx306KZZ1n7z8ul9JJw%3D&Expires=1734765507"
+}
+
+---
+
+curl 'https://fleet.yango.com/api/fleet/fleet-payouts-web/v1/transactions/list' \
+  -H 'Accept: */*' \
+  -H 'Accept-Language: en-US,en;q=0.9' \
+  -H 'Connection: keep-alive' \
+  -H 'Origin: https://fleet.yango.com' \
+  -H 'Referer: https://fleet.yango.com/reports/payouts/bfp%2Foebs%2F1739199124?park_id=c5cf968c4c2f4bbc947c8c0703b7e124&theme=day&lang=en' \
+  -H 'Sec-Fetch-Dest: empty' \
+  -H 'Sec-Fetch-Mode: cors' \
+  -H 'Sec-Fetch-Site: same-origin' \
+  -H 'User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36' \
+  -H 'X-Client-Version: fleet/13631' \
+  -H 'X-Park-Id: c5cf968c4c2f4bbc947c8c0703b7e124' \
+  -H 'sec-ch-ua: "Google Chrome";v="131", "Chromium";v="131", "Not_A Brand";v="24"' \
+  -H 'sec-ch-ua-mobile: ?0' \
+  -H 'sec-ch-ua-platform: "Windows"' \
+  --data-raw '{"payment_id":"bfp/oebs/1739199124","limit":25}'
+  
+{
+    "order_number": "bfp/oebs/1739199124",
+    "transactions": [
+        {
+            "transaction_id": "payments/61922633898/0",
+            "contract_id": "10087919/23",
+            "order_id": "16a36b533084174db4d4ae35f051fabb",
+            "driver_id": "d3264c0e62634d319680c9cb6837885b",
+            "driver_name": "SENAI BEHAYLU ABEL",
+            "transaction_type": "cashless",
+            "amount": "1.22",
+            "currency": "AED",
+            "exchange_amount": "1.22",
+            "exchange_rate": "1.00000"
+        },
+        {
+            "transaction_id": "payments/61921560521/0",
+            "contract_id": "10087919/23",
+            "order_id": "16a36b533084174db4d4ae35f051fabb",
+            "driver_id": "d3264c0e62634d319680c9cb6837885b",
+            "driver_name": "SENAI BEHAYLU ABEL",
+            "transaction_type": "cashless",
+            "amount": "16.00",
+            "currency": "AED",
+            "exchange_amount": "16.00",
+            "exchange_rate": "1.00000"
+        },
+		
+---		
+
+curl 'https://fleet.yango.com/api/fleet/fleet-orders/v1/orders/item/card?id=16a36b533084174db4d4ae35f051fabb&tz=Asia%2FDubai&driver_profile_id=d3264c0e62634d319680c9cb6837885b' \
+  -H 'Accept: */*' \
+  -H 'Accept-Language: en-US,en;q=0.9' \
+  -H 'Connection: keep-alive' \
+  -H 'Cookie: _gcl_gs=2.1.
+  -H 'Language: en' \
+  -H 'Referer: https://fleet.yango.com/orders/16a36b533084174db4d4ae35f051fabb?park_id=c5cf968c4c2f4bbc947c8c0703b7e124&lang=en&theme=day' \
+  -H 'Sec-Fetch-Dest: empty' \
+  -H 'Sec-Fetch-Mode: cors' \
+  -H 'Sec-Fetch-Site: same-origin' \
+  -H 'User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36' \
+  -H 'X-Client-Version: fleet/13631' \
+  -H 'X-Park-Id: c5cf968c4c2f4bbc947c8c0703b7e124' \
+  -H 'sec-ch-ua: "Google Chrome";v="131", "Chromium";v="131", "Not_A Brand";v="24"' \
+  -H 'sec-ch-ua-mobile: ?0' \
+  -H 'sec-ch-ua-platform: "Windows"'
+  
+{
+    "sections": [
+        {
+            "blocks": [
+                {
+                    "name": "Trip price",
+                    "value": {
+                        "text": "AED 23",
+                        "type": "text"
+                    },
+                    "sub_blocks": [
+                        {
+                            "name": "Price",
+                            "value": {
+                                "text": "AED 23",
+                                "type": "text"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "Service fee",
+                    "value": {
+                        "text": "-AED 4.83",
+                        "type": "text"
+                    },
+                    "sub_blocks": [
+                        {
+                            "name": "Service fee for trip including VAT",
+                            "value": {
+                                "text": "-AED 4.83",
+                                "type": "text"
+                            },
+                            "block_description": {
+                                "text": "21% of trip price"
+                            }
+                        }
+                    ]
+
+curl 'https://fleet.yango.com/api/v1/reports/transactions/park/download-async?operation_id=ba746b251a80468bb2c87bb87c607c99' \
+
+curl 'https://fleet.yango.com/api/fleet/fleet-payouts-web/v2/payouts/list' \
+
+(response is)
+{
+    "payments": [
+        {
+            "id": "bfp%2Foebs%2F1739199124",
+            "order_number": "1913",
+            "status": "paid",
+            "can_confirm": true,
+            "creation_date": "2024-12-02T23:27:54+0000",
+            "event_at": "2024-12-02T23:27:54+00:00",
+            "bank_account_number": "AE450260001015858828101",
+            "payment_target": "Payment under the Agreement OF-10087919/23 180.75aed, Payment under the Agreement 10087919/23 2197.35aed",
+            "amount": "2378.1",
+            "currency": "AED"
+        }
+    ]
+}
+
+
+curl 'https://fleet.yango.com/api/fleet/reports-builder/report/payouts?operation_id=f002d7453def41acb909443e0bad9895' \
+
+curl 'https://fleet.yango.com/api/fleet/reports-storage/v1/operations/status?operation_id=f002d7453def41acb909443e0bad9895' \
+
+(response is)  
+{"status":"new"}
+{"status":"uploaded"}
+
+curl 'https://fleet.yango.com/api/fleet/reports-storage/v1/operations/download?operation_id=f002d7453def41acb909443e0bad9895' \
+
+{
+    "file_name": "report_payout_details.csv",
+    "link": "https://fleet-reports-storage.s3-private.mds.yandex.net/tmp/f002d7453def41acb909443e0bad9895?AWSAccessKeyId=hcAZ1OG0XNuZ3UmhBySI&Signature=raVg61x8jx306KZZ1n7z8ul9JJw%3D&Expires=1734765507"
+}
+
+curl 'https://fleet.yango.com/api/fleet/fleet-payouts-web/v1/transactions/list' \
+  
+{
+    "order_number": "bfp/oebs/1739199124",
+    "transactions": [
+        {
+            "transaction_id": "payments/61922633898/0",
+            "contract_id": "10087919/23",
+            "order_id": "16a36b533084174db4d4ae35f051fabb",
+            "driver_id": "d3264c0e62634d319680c9cb6837885b",
+            "driver_name": "SENAI BEHAYLU ABEL",
+            "transaction_type": "cashless",
+            "amount": "1.22",
+            "currency": "AED",
+            "exchange_amount": "1.22",
+            "exchange_rate": "1.00000"
+        },
+        {
+            "transaction_id": "payments/61921560521/0",
+            "contract_id": "10087919/23",
+            "order_id": "16a36b533084174db4d4ae35f051fabb",
+            "driver_id": "d3264c0e62634d319680c9cb6837885b",
+            "driver_name": "SENAI BEHAYLU ABEL",
+            "transaction_type": "cashless",
+            "amount": "16.00",
+            "currency": "AED",
+            "exchange_amount": "16.00",
+            "exchange_rate": "1.00000"
+        },
+		
+---		
+
+curl 'https://fleet.yango.com/api/fleet/fleet-orders/v1/orders/item/card?id=16a36b533084174db4d4ae35f051fabb&tz=Asia%2FDubai&driver_profile_id=d3264c0e62634d319680c9cb6837885b' \
+  
+{
+    "sections": [
+        {
+            "blocks": [
+                {
+                    "name": "Trip price",
+                    "value": {
+                        "text": "AED 23",
+                        "type": "text"
+                    },
+                    "sub_blocks": [
+                        {
+                            "name": "Price",
+                            "value": {
+                                "text": "AED 23",
+                                "type": "text"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "Service fee",
+                    "value": {
+                        "text": "-AED 4.83",
+                        "type": "text"
+                    },
+                    "sub_blocks": [
+                        {
+                            "name": "Service fee for trip including VAT",
+                            "value": {
+                                "text": "-AED 4.83",
+                                "type": "text"
+                            },
+                            "block_description": {
+                                "text": "21% of trip price"
+                            }
+                        }
+                    ]
