@@ -32,7 +32,7 @@ jobs:
         run: pyinstaller --onefile download_report_careem.py
 
       - name: Upload artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: careem
           path: dist/download_report_careem.exe
@@ -41,7 +41,7 @@ jobs:
         run: pyinstaller --onefile download_report_yango.py
 
       - name: Upload artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: yango
           path: dist/download_report_yango.exe
@@ -50,7 +50,7 @@ jobs:
         run: pyinstaller --onefile download_report_uber.py
 
       - name: Upload artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: uber
           path: dist/download_report_uber.exe
