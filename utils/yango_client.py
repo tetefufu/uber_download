@@ -17,7 +17,6 @@ class YangoClient:
 
     async def get_transactions(self, operation_id, from_date, to_date):
         url = f"{self.base_url}/v1/reports/transactions/park/download-async?operation_id={operation_id}"
-        # url = "https://fleet.yango.com/api/v1/reports/transactions/park/download-async?operation_id=ba746b251a80468bb2c87bb87c607c95"
         
         payload = {
             "query": {

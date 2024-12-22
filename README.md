@@ -17,3 +17,9 @@ For careem - start from number
 
 - 1 is min
 - 3 to go back 3 weeks
+
+## Yango
+
+- Generates rolling 30 days
+- Reads creds from `curl_yango.txt`
+- Reads output folder from `config.yml`
