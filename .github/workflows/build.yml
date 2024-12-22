@@ -47,10 +47,10 @@ jobs:
           path: dist/download_report_yango.exe
 
       - name: Build executable
-        run: pyinstaller --onefile download_report.py
+        run: pyinstaller --onefile download_report_uber.py
 
       - name: Upload artifact
         uses: actions/upload-artifact@v3
         with:
           name: uber
-          path: dist/download_report.exe
+          path: dist/download_report_uber.exe

@@ -26,8 +26,8 @@ def download_and_save_file(filename, url):
     logging.info(f"File saved as {filename}")
 
 
-def generate_report():
-    return client.generate()
+def generate_report(report_type):
+    return client.generate(report_type)
 
 
 def wait_for_report_completion():
@@ -50,11 +50,18 @@ def save_file(url, filename):
     download_and_save_file(filename=filename, url=url)
 
 
-if __name__ == "__main__":
-    report_id = generate_report()
+def generate_report_type(report_type):
+    report_id = generate_report(report_type)
     status, filename = wait_for_report_completion()
     download_url = get_download_url(report_id)
 
     base_path = config['output_folder']
     full_path = os.path.join(base_path, filename) + ".csv"
     save_file(download_url, full_path)
+
+
+if __name__ == "__main__":
+    generate_report_type("REPORT_TYPE_PAYMENTS_ORDER")
+    generate_report_type("REPORT_TYPE_PAYMENTS_ORGANIZATION")
+    generate_report_type("REPORT_TYPE_PAYMENTS_DRIVER")
+    
