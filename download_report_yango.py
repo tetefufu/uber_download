@@ -34,9 +34,12 @@ def save_csv_content(url, filename):
 
     return csv_content
 
-async def start_report_generation(start_date, end_date):
+async def start_report_generation(report, start_date, end_date):
     operation_id = uuid.uuid4().hex
-    await client.get_transactions(operation_id, start_date, end_date)
+    if report == "payouts":
+        await client.get_payouts(operation_id, start_date, end_date)
+    else:
+        await client.get_transactions(operation_id, start_date, end_date)
     return operation_id
 
 async def wait_for_report_completion(operation_id):
@@ -75,29 +78,39 @@ async def get_all_transaction_details(client, transactions):
 
 async def main():
     start_date, end_date = generate_dates_rolling_30()
-    operation_id = await start_report_generation(start_date, end_date)
+    operation_id = await start_report_generation("transactions", start_date, end_date)
     await wait_for_report_completion(operation_id)
     report_details = await fetch_report_download_url(operation_id)
     download_url = report_details.get("link")
     filename = report_details.get("file_name")
+    csv_content = download_and_parse_csv(download_url, filename)
+    logging.info("CSV content downloaded and parsed successfully.")
+    
+    transactions = convert_to_dict_list(csv_content)
+    transactions_details = await get_all_transaction_details(client, transactions)
 
-    if download_url and filename:
-        csv_content = download_and_parse_csv(download_url, filename)
-        logging.info("CSV content downloaded and parsed successfully.")
-        
-        transactions = convert_to_dict_list(csv_content)
+    logging.info("CSV content downloaded and parsed successfully.")
 
-        transactions_details = await get_all_transaction_details(client, transactions)
+    filename = f"{filename}_{datetime.now().strftime('%Y%m%d_%H%M')}_yango_downloader"
+    base_path = config['output_folder']
+    full_path = os.path.join(base_path, filename) + ".csv"
+    save_file(transactions_details, full_path)
 
-        filename = f"{filename}_{datetime.now().strftime('%Y%m%d_%H%M')}_yango_downloader"
-        base_path = config['output_folder']
-        full_path = os.path.join(base_path, filename) + ".csv"
-        save_file(transactions_details, full_path)
-        
-        return transactions_details
+    operation_id = await start_report_generation("payouts", start_date, end_date)
+    await wait_for_report_completion(operation_id)
+    report_details = await fetch_report_download_url(operation_id)
+    download_url = report_details.get("link")
+    filename = report_details.get("file_name")
+    csv_content = download_and_parse_csv(download_url, filename)
+    payouts = convert_to_dict_list(csv_content)
 
-    logging.error("Download URL or filename missing.")
-    return []
+    filename = f"{filename}_{datetime.now().strftime('%Y%m%d_%H%M')}_yango_downloader_payouts"
+    base_path = config['output_folder']
+    full_path = os.path.join(base_path, filename) + ".csv"
+    save_file(payouts, full_path)
+    
+    return transactions_details
+
 
 if __name__ == "__main__":
     asyncio.run(main())

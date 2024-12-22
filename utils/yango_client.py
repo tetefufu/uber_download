@@ -36,11 +36,30 @@ class YangoClient:
         # payload = '{"query":{"park":{"transaction":{"event_at":{"from":"2024-12-12T00:00:00.000+04:00","to":"2024-12-21T00:00:00.000+04:00"},"without_cash":true}}},"charset":"utf-8-sig"}'
         async with aiohttp.ClientSession(headers=self.headers) as session:
             logging.info(f"{url}")
-            async with session.post(url, json=payload) as response:  # Note: use 'data' to send raw JSON
+            async with session.post(url, json=payload) as response:
                 logging.info(f"Response: {response.status} {response.reason} {url}")
                 response.raise_for_status()
                 return await response.json()
 
+    async def get_payouts(self, operation_id, from_date, to_date):
+        url = f"{self.base_url}/fleet/reports-builder/report/payouts?operation_id={operation_id}"
+
+        payload = {
+            "locale": "en",
+            "payment_at_from": from_date,
+            "payment_at_to": to_date,
+            "statuses": ["created", "transmitted", "paid"],
+            "park_tz_id": "Asia/Dubai",
+            "park_clid": "400001783251"
+        }
+
+        async with aiohttp.ClientSession(headers=self.headers) as session:
+            logging.info(f"{url}")
+            async with session.post(url, json=payload) as response:
+                logging.info(f"Response: {response.status} {response.reason} {url}")
+                response.raise_for_status()
+                return await response.json()
+    
     async def get_payouts_list(self):
         url = f"{self.base_url}/fleet/fleet-payouts-web/v2/payouts/list"
         async with aiohttp.ClientSession(headers=self.headers) as session:
@@ -85,9 +104,21 @@ class YangoClient:
                 response.raise_for_status()
                 response_data = await response.json()
 
+                order_number = None
+                for section in response_data["sections"]:
+                    for block in section.get("blocks", []):
+                        if block["name"] == "Order number":
+                            order_number = block["value"]["text"]
+                            break
+                    if order_number:
+                        break
+
+                print(f"Order number: {order_number}")
+
                 transactions_info = response_data.get("transactions_info", {})
 
                 flat_json = {}
+                flat_json['order_number'] = order_number
 
                 for group in transactions_info.get("groups", []):
                     group_name = group.get("name")
