@@ -31,13 +31,10 @@ jobs:
       - name: Build executable
         run: pyinstaller --onefile download_report_careem.py
 
-      - name: List contents of dist folder
-        run: dir dist
-
       - name: Upload artifact
         uses: actions/upload-artifact@v3
         with:
-          name: executable
+          name: careem
           path: dist/download_report_careem.exe
 
       - name: Build executable
@@ -46,5 +43,14 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-artifact@v3
         with:
-          name: executable
+          name: yango
           path: dist/download_report_yango.exe
+
+      - name: Build executable
+        run: pyinstaller --onefile download_report.py
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: uber
+          path: dist/download_report.exe
