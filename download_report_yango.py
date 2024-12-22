@@ -12,6 +12,7 @@ from utils.config_utils import read_config
 from utils.creds import extract_cookie_value_yango
 from urllib.parse import quote
 
+from utils.date_utils import generate_dates_rolling_30
 from utils.format_utils import convert_to_dict_list
 from utils.log_utils import *
 from utils.yango_client import YangoClient
@@ -33,13 +34,12 @@ def save_csv_content(url, filename):
 
     return csv_content
 
-async def start_report_generation():
+async def start_report_generation(start_date, end_date):
     operation_id = uuid.uuid4().hex
-    await client.get_transactions(operation_id, "2024-12-12T00:00:00.000+04:00", "2024-12-22T00:00:00.000+04:00")
+    await client.get_transactions(operation_id, start_date, end_date)
     return operation_id
 
 async def wait_for_report_completion(operation_id):
-    # operation_id = ""
     status = "new"
     while status not in ("uploaded", "completed"):
         await asyncio.sleep(5)
@@ -74,7 +74,8 @@ async def get_all_transaction_details(client, transactions):
 
 
 async def main():
-    operation_id = await start_report_generation()
+    start_date, end_date = generate_dates_rolling_30()
+    operation_id = await start_report_generation(start_date, end_date)
     await wait_for_report_completion(operation_id)
     report_details = await fetch_report_download_url(operation_id)
     download_url = report_details.get("link")
