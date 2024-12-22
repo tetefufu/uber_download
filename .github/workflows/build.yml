@@ -6,7 +6,7 @@ on:
       - master
   pull_request:
     branches:
-      - main
+      - master
 
 jobs:
   build:
@@ -23,23 +23,34 @@ jobs:
         with:
           python-version: "3.x"
 
-      # Install dependencies
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
           pip install -r .\requirements.txt
 
-      # Build executable
       - name: Build executable
         run: pyinstaller --onefile download_report_careem.py
 
-      # List contents of dist folder for debugging
-      - name: List contents of dist folder
-        run: dir dist
-
-      # Upload artifact
       - name: Upload artifact
         uses: actions/upload-artifact@v3
         with:
-          name: executable
+          name: careem
           path: dist/download_report_careem.exe
+
+      - name: Build executable
+        run: pyinstaller --onefile download_report_yango.py
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: yango
+          path: dist/download_report_yango.exe
+
+      - name: Build executable
+        run: pyinstaller --onefile download_report.py
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: uber
+          path: dist/download_report.exe

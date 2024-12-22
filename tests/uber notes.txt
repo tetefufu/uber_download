@@ -1,0 +1,1469 @@
+uber new 
+
+curl 'https://supplier.uber.com/graphql' \
+  -H 'accept: */*' \
+  -H 'accept-language: en-US,en;q=0.9' \
+  -H 'content-type: application/json' \
+  -H 'cookie: marketing_vistor_id=24a5e363-ddca-40a5-a69b-8f9ed5a09e5f; udi-id=E93PBStdkefIDhlgGrm/UXb09LW1jOVlAHAnqOWunvxTbHMqLdmQwDM+9m2WKgdP7OwELlRqobZZQvge8z2YeflGZ64UX2ZLoxL9vO+eD3bDaiTdZPCDqOI6aqFTHlibDgnBi37ADx1mNie6FiIT7PZ4fDwLKlHpyfNBxYqtyJWxYSKoVnnznUU4QRQwlmBN5AZH1pc4cnYQjppFyENdaA==awpZZHzBdW3uiQn6G/BvdQ==bVN5bDPB6gHhBha4BMIPf+5lHkr5NwootZHdrFq1WUc=; x-uber-analytics-session-id=9eaba4ab-d27d-4ed2-9843-78f843bd711c; udi-fingerprint=UlhNskI7hzMBEmTnWxfm8Y8r5WqVWIZSkUsm0ZzTPpJkT99vZ/lqTExiBEqFIFpufTz0QcWSuxPhrfAT/+fnTA==sqDkD5Nznnfdp/NWdeEjMmznnX8WDbVbncC33NA2rkE=; sid=QA.CAESEHawk5prOkqhqkA_g0jenpwY3oufvAYiATEqJDhhYTNmZTAxLTQ1MzMtNGQ4YS1iZWJlLWZiOWM5NTAxNTM4MDI8hOfsZH7BqVx6JiIF21eW0nEUeeG5I7piN7H9-08WQPVX785Wt1mwaGOVfoINxuE3rKux0FRxTM72i78WOgExQgh1YmVyLmNvbQ.quDB3jO0yDUxxKTMj6mdekG_EY8tmfzIjjgasH_5BZ0; csid=1.1736951262744.qlZNvsl7cr2ptTcVYjtNTHyAa7ETh7Ci69ZQNwpt0HM=; _ua={"session_id":"7cc15674-4c41-438f-9e96-8910fa17b0c6","session_time_ms":1734359262756}; jwt-session=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE3MzQzNTkyNjIsImRhdGEiOnsidGVuYW5jeSI6InViZXIvcHJvZHVjdGlvbiJ9LCJleHAiOjE3MzQ0NDU2NjJ9.zSZ9AHgZjC6TWWSnamjkUKFazxatijcP1dCoQXdoJxk; utag_main__sn=1; utag_main_ses_id=1734359266858%3Bexp-session; utag_main__pn=1%3Bexp-session; mp_adec770be288b16d9008c964acfba5c2_mixpanel=%7B%22distinct_id%22%3A%20%228aa3fe01-4533-4d8a-bebe-fb9c95015380%22%2C%22%24device_id%22%3A%20%22193cfde36483bc-0c2eb328829f5e-26011851-32a000-193cfde3649683%22%2C%22%24initial_referrer%22%3A%20%22https%3A%2F%2Fauth.uber.com%2F%22%2C%22%24initial_referring_domain%22%3A%20%22auth.uber.com%22%2C%22%24user_id%22%3A%20%228aa3fe01-4533-4d8a-bebe-fb9c95015380%22%7D; CONSENTMGR=c1:1%7Cc2:1%7Cc3:1%7Cc4:1%7Cc5:1%7Cc6:1%7Cc7:1%7Cc8:1%7Cc9:1%7Cc10:1%7Cc11:1%7Cc12:1%7Cc13:1%7Cc14:1%7Cc15:1%7Cts:1734359266897%7Cconsent:true; utag_main__ss=0%3Bexp-session; _hjSessionUser_960703=eyJpZCI6ImNiZjcxNmI0LTdlNjQtNTYwOC1hZjY1LWE5MzcxNTlmMjBjMSIsImNyZWF0ZWQiOjE3MzQzNTkyNjc1NTIsImV4aXN0aW5nIjpmYWxzZX0=; _hjSession_960703=eyJpZCI6IjBhZTk0NDdmLTc0MTQtNGJjMy1hNTFjLTM3YWE4NWY3MTZkOCIsImMiOjE3MzQzNTkyNjc1NTMsInMiOjAsInIiOjAsInNiIjowLCJzciI6MCwic2UiOjAsImZzIjoxLCJzcCI6MX0=; _gcl_au=1.1.492179879.1734359268; utag_main__se=16%3Bexp-session; utag_main__st=1734361359410%3Bexp-session' \
+  -H 'origin: https://supplier.uber.com' \
+  -H 'priority: u=1, i' \
+  -H 'referer: https://supplier.uber.com/orgs/8aa3fe01-4533-4d8a-bebe-fb9c95015380/reports?_csid=dRKHFnpoisQQVLZULYty4A&state=kCKMEpnzSyNY9N_ep2vRjkqMnS0vUpBdWmLZPrP9a9M%3D&effect=' \
+  -H 'sec-ch-ua: "Google Chrome";v="131", "Chromium";v="131", "Not_A Brand";v="24"' \
+  -H 'sec-ch-ua-mobile: ?0' \
+  -H 'sec-ch-ua-platform: "Windows"' \
+  -H 'sec-fetch-dest: empty' \
+  -H 'sec-fetch-mode: cors' \
+  -H 'sec-fetch-site: same-origin' \
+  -H 'user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36' \
+  -H 'x-csrf-token: x' \
+  --data-raw $'{"operationName":"generateVsPaymentReport","variables":{"orgUUID":"8aa3fe01-4533-4d8a-bebe-fb9c95015380","paymentReportType":"REPORT_TYPE_PAYMENTS_ORGANIZATION","startDate":"2024-12-16","endDate":"2024-12-16","startTimeUnixMillis":"1734307356000","endTimeUnixMillis":"1734361359705"},"query":"mutation generateVsPaymentReport($orgUUID: ID\u0021, $paymentReportType: String\u0021, $startDate: Date\u0021, $endDate: Date\u0021, $startTimeUnixMillis: String, $endTimeUnixMillis: String) {\\n  generateVsPaymentReport(\\n    orgUUID: $orgUUID\\n    paymentReportType: $paymentReportType\\n    startDate: $startDate\\n    endDate: $endDate\\n    startTimeUnixMillis: $startTimeUnixMillis\\n    endTimeUnixMillis: $endTimeUnixMillis\\n  ) {\\n    reportID\\n    __typename\\n  }\\n}\\n"}'
+  
+  
+curl 'https://supplier.uber.com/graphql' \
+  -H 'accept: */*' \
+  -H 'accept-language: en-US,en;q=0.9' \
+  -H 'content-type: application/json' \
+  -H 'cookie: marketing_vistor_id=24a5e363-ddca-40a5-a69b-8f9ed5a09e5f; udi-id=E93PBStdkefIDhlgGrm/UXb09LW1jOVlAHAnqOWunvxTbHMqLdmQwDM+9m2WKgdP7OwELlRqobZZQvge8z2YeflGZ64UX2ZLoxL9vO+eD3bDaiTdZPCDqOI6aqFTHlibDgnBi37ADx1mNie6FiIT7PZ4fDwLKlHpyfNBxYqtyJWxYSKoVnnznUU4QRQwlmBN5AZH1pc4cnYQjppFyENdaA==awpZZHzBdW3uiQn6G/BvdQ==bVN5bDPB6gHhBha4BMIPf+5lHkr5NwootZHdrFq1WUc=; x-uber-analytics-session-id=9eaba4ab-d27d-4ed2-9843-78f843bd711c; udi-fingerprint=UlhNskI7hzMBEmTnWxfm8Y8r5WqVWIZSkUsm0ZzTPpJkT99vZ/lqTExiBEqFIFpufTz0QcWSuxPhrfAT/+fnTA==sqDkD5Nznnfdp/NWdeEjMmznnX8WDbVbncC33NA2rkE=; sid=QA.CAESEHawk5prOkqhqkA_g0jenpwY3oufvAYiATEqJDhhYTNmZTAxLTQ1MzMtNGQ4YS1iZWJlLWZiOWM5NTAxNTM4MDI8hOfsZH7BqVx6JiIF21eW0nEUeeG5I7piN7H9-08WQPVX785Wt1mwaGOVfoINxuE3rKux0FRxTM72i78WOgExQgh1YmVyLmNvbQ.quDB3jO0yDUxxKTMj6mdekG_EY8tmfzIjjgasH_5BZ0; csid=1.1736951262744.qlZNvsl7cr2ptTcVYjtNTHyAa7ETh7Ci69ZQNwpt0HM=; _ua={"session_id":"7cc15674-4c41-438f-9e96-8910fa17b0c6","session_time_ms":1734359262756}; jwt-session=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE3MzQzNTkyNjIsImRhdGEiOnsidGVuYW5jeSI6InViZXIvcHJvZHVjdGlvbiJ9LCJleHAiOjE3MzQ0NDU2NjJ9.zSZ9AHgZjC6TWWSnamjkUKFazxatijcP1dCoQXdoJxk; utag_main__sn=1; utag_main_ses_id=1734359266858%3Bexp-session; utag_main__pn=1%3Bexp-session; mp_adec770be288b16d9008c964acfba5c2_mixpanel=%7B%22distinct_id%22%3A%20%228aa3fe01-4533-4d8a-bebe-fb9c95015380%22%2C%22%24device_id%22%3A%20%22193cfde36483bc-0c2eb328829f5e-26011851-32a000-193cfde3649683%22%2C%22%24initial_referrer%22%3A%20%22https%3A%2F%2Fauth.uber.com%2F%22%2C%22%24initial_referring_domain%22%3A%20%22auth.uber.com%22%2C%22%24user_id%22%3A%20%228aa3fe01-4533-4d8a-bebe-fb9c95015380%22%7D; CONSENTMGR=c1:1%7Cc2:1%7Cc3:1%7Cc4:1%7Cc5:1%7Cc6:1%7Cc7:1%7Cc8:1%7Cc9:1%7Cc10:1%7Cc11:1%7Cc12:1%7Cc13:1%7Cc14:1%7Cc15:1%7Cts:1734359266897%7Cconsent:true; utag_main__ss=0%3Bexp-session; _hjSessionUser_960703=eyJpZCI6ImNiZjcxNmI0LTdlNjQtNTYwOC1hZjY1LWE5MzcxNTlmMjBjMSIsImNyZWF0ZWQiOjE3MzQzNTkyNjc1NTIsImV4aXN0aW5nIjpmYWxzZX0=; _hjSession_960703=eyJpZCI6IjBhZTk0NDdmLTc0MTQtNGJjMy1hNTFjLTM3YWE4NWY3MTZkOCIsImMiOjE3MzQzNTkyNjc1NTMsInMiOjAsInIiOjAsInNiIjowLCJzciI6MCwic2UiOjAsImZzIjoxLCJzcCI6MX0=; _gcl_au=1.1.492179879.1734359268; utag_main__se=18%3Bexp-session; utag_main__st=1734361383363%3Bexp-session' \
+  -H 'origin: https://supplier.uber.com' \
+  -H 'priority: u=1, i' \
+  -H 'referer: https://supplier.uber.com/orgs/8aa3fe01-4533-4d8a-bebe-fb9c95015380/reports?_csid=dRKHFnpoisQQVLZULYty4A&state=kCKMEpnzSyNY9N_ep2vRjkqMnS0vUpBdWmLZPrP9a9M%3D&effect=' \
+  -H 'sec-ch-ua: "Google Chrome";v="131", "Chromium";v="131", "Not_A Brand";v="24"' \
+  -H 'sec-ch-ua-mobile: ?0' \
+  -H 'sec-ch-ua-platform: "Windows"' \
+  -H 'sec-fetch-dest: empty' \
+  -H 'sec-fetch-mode: cors' \
+  -H 'sec-fetch-site: same-origin' \
+  -H 'user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36' \
+  -H 'x-csrf-token: x' \
+  --data-raw $'{"operationName":"generateVsPaymentReport","variables":{"orgUUID":"8aa3fe01-4533-4d8a-bebe-fb9c95015380","paymentReportType":"REPORT_TYPE_PAYMENTS_DRIVER","startDate":"2024-12-16","endDate":"2024-12-16","startTimeUnixMillis":"1734307356000","endTimeUnixMillis":"1734361359705"},"query":"mutation generateVsPaymentReport($orgUUID: ID\u0021, $paymentReportType: String\u0021, $startDate: Date\u0021, $endDate: Date\u0021, $startTimeUnixMillis: String, $endTimeUnixMillis: String) {\\n  generateVsPaymentReport(\\n    orgUUID: $orgUUID\\n    paymentReportType: $paymentReportType\\n    startDate: $startDate\\n    endDate: $endDate\\n    startTimeUnixMillis: $startTimeUnixMillis\\n    endTimeUnixMillis: $endTimeUnixMillis\\n  ) {\\n    reportID\\n    __typename\\n  }\\n}\\n"}'
+
+
+
+curl 'https://captain.careem.com/api/transaction/3226722?cycleNumber=0&viewParams=\{%22cycleIdx%22:%200\}&viewType=cycle' \
+  -H 'accept: application/json, text/plain, */*' \
+  -H 'accept-language: en-US,en;q=0.9' \
+  -H 'authcaptainid: 3226722' \
+  -H 'authtoken: Bearer eyJraWQiOiJjYjIyMmE0ZS1hYzlmLTQ3YzQtOGE5Mi02YWEwYjAyNTE1YmIiLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiI2NTk3MzYwNSIsImF1ZCI6ImNvbS5jYXJlZW0uaW50ZXJuYWwiLCJsaW1vX3BvcnRhbFwvc291cmNlX2FwcCI6IkxJTU9fUE9SVEFMIiwiYWNjZXNzX3R5cGUiOiJDVVNUT01FUiIsInVzZXJfaWQiOjY1OTczNjA1LCJhenAiOiJlYjMzYjU4OC00NGI2LTQ3Y2QtOWEwYS0wZDA0YWY5MTQ3MDQuY2FwdGFpbi5jYXJlZW0uY29tIiwia2luZCI6IkNVU1RPTUVSIiwic2NvcGUiOiJlZGdlX2NhcHRhaW4gcHJvZmlsZSIsImlzcyI6Imh0dHBzOlwvXC9pZGVudGl0eS5jYXJlZW0uY29tXC8iLCJleHAiOjE3MzMzMjc2NTEsImlhdCI6MTczMzI0MTI1MSwianRpIjoiOTJkMTMzNmYtY2ZjNy00NjI2LThlZjMtYTYyYzMwNzMwYzUzIn0.Zm9oFY57n5oPx1aZtJX5Fp1PGS-NxNjPPXm__N9rsv1GZRwIBoE0OiIN3hQN7EZp3h_Mh9Siz61uANEw3-phbNfUFs-G_FFPFRlxm1HmZ-qCDsSh66D0aTcv7o6LoePgUvQAiQdrD63GUdNgYk1S2RVWQwWJoeqLaom7JHGYqy2QLdKnl8DB8TLTiVxbvUmSL1tPig1q9_fSkYGlprfnRULppWCStmbe9VisKgUakJtu0lP5TsIokCSQSGIfI0grlggKWIOv8lCKUIoi9LMb0l_FqxkAWueeNWC-fkt71VeH9U5xtNp6GFG7QbWYCr84TeI26vDCiqvc8LbcgjfB1w' \
+  -H 'cookie: _gid=GA1.2.1571144381.1733209062; _ga_PK41GCWX6X=GS1.2.1733209062.1.0.1733209062.0.0.0; _ga=GA1.1.1658488290.1733209058; _ga_VXZQ802Y3Y=GS1.1.1733209058.1.1.1733209199.0.0.0; crm_sess=eyJpZCI6IkFPUGxRIn0=; crm_sess.sig=GIH4BFkZyHAb8v33PFFc24rXbf8; _hjSessionUser_3371954=eyJpZCI6IjZiZmNlYjg3LTgxMTgtNWI1OC1hN2M0LTI5OGYwN2JhYzU0YSIsImNyZWF0ZWQiOjE3MzMyMDkzNzQ4MjMsImV4aXN0aW5nIjp0cnVlfQ==; _gcl_au=1.1.319209743.1733209731; _ga_M090P5XSSP=GS1.1.1733209732.1.0.1733209734.58.0.890373008; __cf_bm=us9iNV0VAH8f8A19lkDCtX1eDtibpE_29grhY8iDkho-1733240680-1.0.1.1-Fq64ORVR8HHFZbMCXmJYhHfYIHDP2lZUqxfd1HyToNcceGrY58.rxPyInuiH67E7WI0tmRFj9hRF2gWuLJ_f1A; _hjSession_3371954=eyJpZCI6IjljNjI0ZmQ3LTYxMGMtNDU1OS1hYjE2LWZkZDY5OTQ5NmM2NCIsImMiOjE3MzMyNDA2NzgwMzcsInMiOjAsInIiOjAsInNiIjowLCJzciI6MCwic2UiOjAsImZzIjowLCJzcCI6MH0=; cf_clearance=_7Haj_F5m34d_2qwO6u2FjniljOb7xHoMPys2EP6Has-1733240947-1.2.1.1-_lDh6gO2ixuixURssfi_DgWxs19uNQo43GuAxwJKKf1qpZCSCJVmmNmvsk4qKHGptr_cn1Dd.OZ65uBGw7YxEfCOZ1CqBOVRsTfBTOXIQltgp4RSerEnXPxU.zVA1LAZgu2QgrCdEV.PmhxVTYu4L0ScyBCyLLbtL00nvs1UJ6VtZNmBvIisaGNL39seuJsShalpXGtYMvQIYpuPAo92fY7O0q2BwC98cEdBb0p604NQ_HvOqRIMjb.vGUSRB6GKGAT9f4u8nI5NqQtvffiuj6Rc0U9nYiU61NUGcL4xPKhvviTpJxBCGCmwU.Zq81xL5Wwos_iGQuYSN3pwJuy9H3QRv0bXNzsClss0Li0eImj44q2q8m1qcmNgxLOD9vIR' \
+  -H 'device: -' \
+  -H 'if-none-match: W/"216d-+MzUxrfl7R5g1pDSGp6NLZsRLnA"' \
+  -H 'language: en' \
+  -H 'priority: u=1, i' \
+  -H 'referer: https://captain.careem.com/v2/main' \
+  -H 'sec-ch-ua: "Google Chrome";v="131", "Chromium";v="131", "Not_A Brand";v="24"' \
+  -H 'sec-ch-ua-mobile: ?0' \
+  -H 'sec-ch-ua-platform: "Windows"' \
+  -H 'sec-fetch-dest: empty' \
+  -H 'sec-fetch-mode: cors' \
+  -H 'sec-fetch-site: same-origin' \
+  -H 'user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36'
+
+
+
+
+{
+    "data": {
+        "carInfo": {
+            "customerCarTypeId": 121,
+            "displayName": "Comfort",
+            "imageUrl": "https://s3-eu-west-1.amazonaws.com/prod-cct-category-images/images/6a670ad05c62489cae70db1ed332b6d1.png",
+            "serviceAreaId": 1
+        },
+        "earnings": "AED 18.17",
+        "meta": {
+            "bookingId": 2075850906,
+            "routeId": 1418724514,
+            "tripVerified": true,
+            "verifiedDriver": true
+        },
+        "sections": [
+            {
+                "lines": [
+                    {
+                        "icon": null,
+                        "left": "Booking ID",
+                        "position": null,
+                        "right": "2075850906",
+                        "showOnlyOnExpanded": null,
+                        "style": "PRIMARY_TEXT",
+                        "tooltipText": null,
+                        "type": "UITextLine"
+                    },
+                    {
+                        "icon": null,
+                        "left": "Car",
+                        "position": null,
+                        "right": "ES300H",
+                        "showOnlyOnExpanded": null,
+                        "style": "PRIMARY_TEXT",
+                        "tooltipText": null,
+                        "type": "UITextLine"
+                    },
+                    {
+                        "icon": null,
+                        "left": "Distance",
+                        "position": null,
+                        "right": "1.36 km",
+                        "showOnlyOnExpanded": null,
+                        "style": "PRIMARY_TEXT",
+                        "tooltipText": null,
+                        "type": "UITextLine"
+                    },
+                    {
+                        "icon": null,
+                        "left": "Initial wait time",
+                        "position": null,
+                        "right": "1.0 min",
+                        "showOnlyOnExpanded": null,
+                        "style": "PRIMARY_TEXT",
+                        "tooltipText": null,
+                        "type": "UITextLine"
+                    },
+                    {
+                        "icon": null,
+                        "left": "Duration",
+                        "position": null,
+                        "right": "14.0 min",
+                        "showOnlyOnExpanded": null,
+                        "style": "PRIMARY_TEXT",
+                        "tooltipText": null,
+                        "type": "UITextLine"
+                    }
+                ],
+                "locations": {
+                    "locations": [
+                        {
+                            "mainLine": {
+                                "style": "PRIMARY_TEXT",
+                                "text": "Careem Pick-up Point",
+                                "type": "UILocationLine"
+                            },
+                            "secondaryLine": {
+                                "style": "SECONDARY_TEXT",
+                                "text": "Marina Mall, Marina Mall, Marina, Dubai",
+                                "type": "UILocationLine"
+                            }
+                        },
+                        {
+                            "mainLine": {
+                                "style": "PRIMARY_TEXT",
+                                "text": "Stella Di Mare Dubai Marina Hotel",
+                                "type": "UILocationLine"
+                            },
+                            "secondaryLine": {
+                                "style": "SECONDARY_TEXT",
+                                "text": "Al Mattla'ee Street, Dubai, Dubai",
+                                "type": "UILocationLine"
+                            }
+                        }
+                    ],
+                    "style": "LOCATION_PATH_GREEN"
+                },
+                "type": "TripDetailsSection"
+            },
+            {
+                "lines": [
+                    {
+                        "icon": null,
+                        "left": "Total fare",
+                        "position": null,
+                        "right": "AED 28.83",
+                        "showOnlyOnExpanded": null,
+                        "style": "PRIMARY_TEXT",
+                        "tooltipText": null,
+                        "type": "UITextLine"
+                    },
+                    {
+                        "showOnlyOnExpanded": false,
+                        "style": "LIGHT_GREY_LINE",
+                        "type": "UILineBreak"
+                    },
+                    {
+                        "icon": null,
+                        "left": "Taxes",
+                        "position": null,
+                        "right": "AED -5.50",
+                        "showOnlyOnExpanded": null,
+                        "style": "PRIMARY_TEXT",
+                        "tooltipText": null,
+                        "type": "UITextLine"
+                    },
+                    {
+                        "icon": null,
+                        "left": "Government tax",
+                        "position": null,
+                        "right": "AED -0.50",
+                        "showOnlyOnExpanded": true,
+                        "style": "SECONDARY_TEXT",
+                        "tooltipText": null,
+                        "type": "UITextLine"
+                    },
+                    {
+                        "icon": null,
+                        "left": "Regulator fee",
+                        "position": null,
+                        "right": "AED -5.00",
+                        "showOnlyOnExpanded": true,
+                        "style": "SECONDARY_TEXT",
+                        "tooltipText": null,
+                        "type": "UITextLine"
+                    },
+                    {
+                        "showOnlyOnExpanded": false,
+                        "style": "LIGHT_GREY_LINE",
+                        "type": "UILineBreak"
+                    },
+                    {
+                        "icon": null,
+                        "left": "Careem fee",
+                        "position": null,
+                        "right": "AED -5.16",
+                        "showOnlyOnExpanded": false,
+                        "style": "PRIMARY_TEXT",
+                        "tooltipText": "Careem fee is % Careem's charging per trip. Fee doesn't vary for different payment types. Careem fee doesn't apply for Refunds (tollgate charge) and Taxes",
+                        "type": "UITextLine"
+                    },
+                    {
+                        "showOnlyOnExpanded": false,
+                        "style": "SOLID_BLACK_LINE",
+                        "type": "UILineBreak"
+                    },
+                    {
+                        "icon": null,
+                        "left": "You received",
+                        "position": null,
+                        "right": "AED 18.17",
+                        "showOnlyOnExpanded": false,
+                        "style": "BOLD_GREEN_TEXT",
+                        "tooltipText": null,
+                        "type": "UITextLine"
+                    },
+                    {
+                        "showOnlyOnExpanded": true,
+                        "style": "LIGHT_GREY_LINE",
+                        "type": "UILineBreak"
+                    },
+                    {
+                        "icon": null,
+                        "left": "Starting fare",
+                        "position": null,
+                        "right": "AED 7.73",
+                        "showOnlyOnExpanded": true,
+                        "style": "SECONDARY_TEXT",
+                        "tooltipText": null,
+                        "type": "UITextLine"
+                    },
+                    {
+                        "icon": null,
+                        "left": "Moving fare",
+                        "position": null,
+                        "right": "AED 2.76",
+                        "showOnlyOnExpanded": true,
+                        "style": "SECONDARY_TEXT",
+                        "tooltipText": null,
+                        "type": "UITextLine"
+                    },
+                    {
+                        "icon": null,
+                        "left": "Waiting fare",
+                        "position": null,
+                        "right": "AED 8.19",
+                        "showOnlyOnExpanded": true,
+                        "style": "SECONDARY_TEXT",
+                        "tooltipText": null,
+                        "type": "UITextLine"
+                    },
+                    {
+                        "icon": null,
+                        "left": "Government tax",
+                        "position": null,
+                        "right": "AED -0.50",
+                        "showOnlyOnExpanded": true,
+                        "style": "SECONDARY_TEXT",
+                        "tooltipText": null,
+                        "type": "UITextLine"
+                    },
+                    {
+                        "showOnlyOnExpanded": false,
+                        "style": "LIGHT_GREY_LINE",
+                        "type": "UILineBreak"
+                    },
+                    {
+                        "afterIcon": "ACTION_ARROW_UP",
+                        "afterText": "Hide details",
+                        "beforeIcon": "ACTION_ARROW_DOWN",
+                        "beforeText": "Show details",
+                        "style": null,
+                        "type": "UIActionLine"
+                    }
+                ],
+                "type": "EarningsSection"
+            },
+            {
+                "lines": [
+                    {
+                        "icon": "INFORMATION_GREEN",
+                        "left": "This trip was paid by card",
+                        "position": "LEFT",
+                        "right": "",
+                        "showOnlyOnExpanded": false,
+                        "style": "BOLD_HEADING_TEXT",
+                        "tooltipText": null,
+                        "type": "UITextLine"
+                    },
+                    {
+                        "icon": null,
+                        "left": "Note: Careem commission for Credit Card bookings is exactly the \r\nsame as for Cash ones",
+                        "position": null,
+                        "right": "",
+                        "showOnlyOnExpanded": false,
+                        "style": "SECONDARY_TEXT",
+                        "tooltipText": null,
+                        "type": "UITextLine"
+                    },
+                    {
+                        "icon": null,
+                        "left": "You received",
+                        "position": null,
+                        "right": "AED 18.17",
+                        "showOnlyOnExpanded": null,
+                        "style": "PRIMARY_TEXT",
+                        "tooltipText": null,
+                        "type": "UITextLine"
+                    },
+                    {
+                        "showOnlyOnExpanded": false,
+                        "style": "LIGHT_GREY_LINE",
+                        "type": "UILineBreak"
+                    },
+                    {
+                        "icon": "GREY_WALLET",
+                        "left": "Trip balance",
+                        "position": "CENTER",
+                        "right": "AED 18.17",
+                        "showOnlyOnExpanded": false,
+                        "style": "BOLD_LARGE_BLACK_TEXT",
+                        "tooltipText": null,
+                        "type": "UITextLine"
+                    }
+                ],
+                "type": "PaymentDetailsSection"
+            }
+        ],
+        "tripDate": "Sunday, 1 Dec, 15:01 PM"
+    }
+}
+
+
+
+
+
+{
+    "captainProfile": 
+    "paymentMethod": null,
+    "lastPayment": null,
+    "verifiedEarningPromise": {
+        "captainId": 3226722,
+        "captainName": "Junaid Saeed",
+        "cityId": 1,
+        "cityName": "Dubai",
+        "countryId": 1,
+        "countryName": "United Arab Emirates",
+        "gmtOffset": 4,
+        "currency": {
+            "id": 1,
+            "displayCode": "AED",
+            "name": "Dirham",
+            "symbol": "AED",
+            "displayOnWeb": 0,
+            "decimalScaling": 2,
+            "driverDecimalScaling": 2
+        },
+        "startTimestamp": 1733011200000,
+        "endTimestamp": 1733615999000,
+        "driverPaymentId": 572331992,
+        "previousDriverPaymentId": 570064441,
+        "inProcessCycleStartTime": 1733011200000,
+        "inProcessCycleCount": 1,
+        "activeBalance": 292.8,
+        "captainTransactions": [
+            {
+                "transactionId": 1490098542,
+                "uuid": "59d29201-f990-408b-9501-b912df5d1e65",
+                "transactionType": "TRIP",
+                "captainId": 3226722,
+                "driverPaymentId": 572331992,
+                "transactionDate": 1733065269000,
+                "transactionTypeId": 63,
+                "adjustmentCategoryId": null,
+                "adjustmentCategoryName": "Trip Earnings",
+                "earning": 18.17,
+                "realisedEarning": 18.17,
+                "adjustmentId": null,
+                "routeId": 1417784899,
+                "routeOutcome": 3,
+                "associatedTrips": [
+                    {
+                        "tripId": 1490098542,
+                        "tripOutcome": 3,
+                        "bookingId": 2075850906,
+                        "bookingStatus": 6,
+                        "verified": 1,
+                        "waived": 0,
+                        "routeId": 1417784899,
+                        "cctId": 121,
+                        "cctName": "Comfort",
+                        "pooling": false
+                    }
+                ],
+                "associatedCampaign": null,
+                "comment": null,
+                "isPooling": false,
+                "verifiedDriver": true,
+                "waivedForDriver": false,
+                "campaignIdentifier": null,
+                "customerCarTypeName": "Comfort",
+                "businessReferenceId": "1490098542-TRIP_EARNING",
+                "cleared": true,
+                "enableCaptainPortalApiV2": true
+            },
+            {
+                "transactionId": 1491994064,
+                "uuid": "4fb4991a-1343-4e43-a0e5-c5a6d860277d",
+                "transactionType": "TRIP",
+                "captainId": 3226722,
+                "driverPaymentId": 572331992,
+                "transactionDate": 1733381592000,
+                "transactionTypeId": 63,
+                "adjustmentCategoryId": null,
+                "adjustmentCategoryName": "Trip Earnings",
+                "earning": 34.13,
+                "realisedEarning": 34.13,
+                "adjustmentId": null,
+                "routeId": 1419678088,
+                "routeOutcome": 3,
+                "associatedTrips": [
+                    {
+                        "tripId": 1491994064,
+                        "tripOutcome": 3,
+                        "bookingId": 2078153112,
+                        "bookingStatus": 6,
+                        "verified": 1,
+                        "waived": 0,
+                        "routeId": 1419678088,
+                        "cctId": 121,
+                        "cctName": "Comfort",
+                        "pooling": false
+                    }
+                ],
+                "associatedCampaign": null,
+                "comment": null,
+                "isPooling": false,
+                "verifiedDriver": true,
+                "waivedForDriver": false,
+                "campaignIdentifier": null,
+                "customerCarTypeName": "Comfort",
+                "businessReferenceId": "1491994064-TRIP_EARNING",
+                "cleared": true,
+                "enableCaptainPortalApiV2": true
+            },
+            
+}
+
+
+ curl 'https://supplier.careem.com/api/limo/portal/captain/acceptance/477236?startTime=1733011200000&endTime=1733356799000'   
+-H 'sec-ch-ua-platform: "Windows"'   
+-H 'Authorization: Bearer eyJraWQiOiJjYjIyMmE0ZS1hYzlmLTQ3YzQtOGE5Mi02YWEwYjAyNTE1YmIiLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiI2NTk3MzYwNSIsImF1ZCI6ImNvbS5jYXJlZW0uaW50ZXJuYWwiLCJsaW1vX3BvcnRhbFwvc291cmNlX2FwcCI6IkxJTU9fUE9SVEFMIiwiYWNjZXNzX3R5cGUiOiJDVVNUT01FUiIsInVzZXJfaWQiOjY1OTczNjA1LCJhenAiOiIyNjIyZDRhZi1lZGE0LTQyZWMtYTk1NC05NDdlMDk3NGY4MjEuc3VwcGxpZXIuY2FyZWVtLmNvbSIsImtpbmQiOiJDVVNUT01FUiIsInNjb3BlIjoib3BlbmlkIGVkZ2VfY2FwdGFpbiBwcm9maWxlIiwiaXNzIjoiaHR0cHM6XC9cL2lkZW50aXR5LmNhcmVlbS5jb21cLyIsImV4cCI6MTczMzQxMzk3OSwiaWF0IjoxNzMzMzI3NTc5LCJqdGkiOiJlNWI5ZTRmYS1kZTljLTQ3NjQtYWFiOC1hMDg4ZWY4NjI0NzkifQ.L8kVJoKoYUsH-LSntJDxTX7pLQlS0dKXFhNFT85JlgnubUarpDeIpG1PCQpMgPrUVbS7LrSHIwBKPLdrPd_1-DIS41gUCmF02DkoW_gT1iJ6Nmt7_DYF8IK-Faep8XSkfIIbEBjqXrq_stZsVXUlQm22m0bHBj0x6uY3v2qh77N8dzXWywu-OJBCDa9m7e6H6Wv-CFZ9UyBP1qYpATNIBVlFAV4Pbla1c8nvEFASgLV7Rm-iALRNmegYh_qwcRupFQVpIRx43S68dMEpFxn7showe9yCRC-z5XsZ2yLop6ZFLicGaA-Ig1mgF6XltqDPIQbzjZD_H1YSrJbQyf6KVw'   
+-H 'Referer: https://supplier.careem.com/v2/dashboard'   
+-H 'User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36'   
+-H 'Accept: application/json, text/plain, */*'   
+-H 'sec-ch-ua: "Google Chrome";v="131", "Chromium";v="131", "Not_A Brand";v="24"'   
+-H 'sec-ch-ua-mobile: ?0'
+
+
+curl 'https://captain.careem.com/api/transaction/3226722?cycleNumber=0&viewParams=\{%22cycleIdx%22:%200\}&viewType=cycle' \
+  -H 'accept: application/json, text/plain, */*' \
+  -H 'accept-language: en-US,en;q=0.9' \
+  -H 'authcaptainid: 3226722' \
+  -H 'authtoken: Bearer eyJraWQiOiI3MmM5NTU0OS0zZjI4LTRiNTEtOWYyZi02OTdiNTI0NTFkMzUiLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiI2NTk3MzYwNSIsImF1ZCI6ImNvbS5jYXJlZW0uaW50ZXJuYWwiLCJsaW1vX3BvcnRhbFwvc291cmNlX2FwcCI6IkxJTU9fUE9SVEFMIiwiYWNjZXNzX3R5cGUiOiJDVVNUT01FUiIsInVzZXJfaWQiOjY1OTczNjA1LCJhenAiOiJlYjMzYjU4OC00NGI2LTQ3Y2QtOWEwYS0wZDA0YWY5MTQ3MDQuY2FwdGFpbi5jYXJlZW0uY29tIiwia2luZCI6IkNVU1RPTUVSIiwic2NvcGUiOiJlZGdlX2NhcHRhaW4gcHJvZmlsZSIsImlzcyI6Imh0dHBzOlwvXC9pZGVudGl0eS5jYXJlZW0uY29tXC8iLCJleHAiOjE3MzM1MDA2NjUsImlhdCI6MTczMzQxNDI2NSwianRpIjoiYWIwY2M2NjMtMWVhMC00NGExLWJmZGEtNGViNzAxYjZhNzg5In0.vrJ0bkiJ5Wa6njEd-QO9hs-vVvzG-Su-HJ3LJKnhw7fojy1Rx1td5TqkzUnhppO9k7m5Z5wkVMigsilLp5pv8CBtw3QUEE_H0jQ0nnJtLjcp2i_D40tjlCelDvqHd7SMwynFSPXoP85shyD1DgrgCCmBsb0o40NNKuhMm8mIadI77HMuGWpTNNhIu8FruPPBA5Zqr7fD3fDmyw41ipq1OOdKdP9KoWnsfwmqDqoOzSlbnLrKBmjOtOT6ot39NpHkw4sCulkh-QCI3Gx4nt9dWW2VIBudnJUohRmYqbGrhM7rEwYItnFzgUSe_1i-REMHfAY-LDsnaio9KQeYhaBqnw' \
+  -H 'cookie: _ga_PK41GCWX6X=GS1.2.1733209062.1.0.1733209062.0.0.0; _ga=GA1.1.1658488290.1733209058; crm_sess=eyJpZCI6IkFPUGxRIn0=; crm_sess.sig=GIH4BFkZyHAb8v33PFFc24rXbf8; _hjSessionUser_3371954=eyJpZCI6IjZiZmNlYjg3LTgxMTgtNWI1OC1hN2M0LTI5OGYwN2JhYzU0YSIsImNyZWF0ZWQiOjE3MzMyMDkzNzQ4MjMsImV4aXN0aW5nIjp0cnVlfQ==; _gcl_au=1.1.319209743.1733209731; _ga_M090P5XSSP=GS1.1.1733328963.2.0.1733328963.60.0.1503028854; __cf_bm=5eOQXvmKlb05jUCJ_fDnkCiIP_uGlBq4VVKm3yVWWzk-1733414123-1.0.1.1-VqtpUkgHnOekqBlBrEn5M5lu1K9L7RJQBlhXtGdYl.IIlCiyPmT9slMmRVc68AYxAtuFMi6_NPZfYUcs23oAXw; _hjSession_3371954=eyJpZCI6IjAxN2JhODljLWY1NjYtNDc1Yi1iZTE4LTMyMzA3NDFlOWUxMCIsImMiOjE3MzM0MTQxMjQzODQsInMiOjAsInIiOjAsInNiIjowLCJzciI6MCwic2UiOjAsImZzIjowLCJzcCI6MH0=; _ga_VXZQ802Y3Y=GS1.1.1733414226.3.1.1733414228.0.0.0; cf_clearance=GeiLra7L4JaVvGym1jgH8UpDhuSx2gF5G6Dx5JE59sI-1733414267-1.2.1.1-2eYUfajP2RJ1N7KvcjdLQS3gdFjei01bLGBMdJNfR69BYdrePtLpajKNgXTeAq2ktE3Wh7Znn5ZwszCEVHxJr0evkIFTlZxQIHvBKSWYKjbchs7bERP.McsGwOkMKXMEDYNDVB3MO7Rp6E3RYvmeEULncEMQd6CYB6R15S5obElAzQKx1Q76PVvGmwUhy3zvqNNS37UKOd1PL.3dyZL6F7.6JeEJw4uhmA5_vybAMajV36WlRnXYF_KshHe8qAuVJYO80AvLpRsWR52hJEwSfR.Nn820OE6X4Prw9wUzXp2vu4gj5mz0PY2l268ilX5HkR6A6fKYnQNOlk.ANQYuDxZcZGmwtpXdU_A0eTNDXoenXkP.wk..2SL4Q.pCkYtQ' \
+  -H 'device: -' \
+  -H 'if-none-match: W/"315f-2YyJPWh3zP1hR0qy5/gfEWVzOVU"' \
+  -H 'language: en' \
+  -H 'priority: u=1, i' \
+  -H 'referer: https://captain.careem.com/v2/main' \
+  -H 'sec-ch-ua: "Google Chrome";v="131", "Chromium";v="131", "Not_A Brand";v="24"' \
+  -H 'sec-ch-ua-mobile: ?0' \
+  -H 'sec-ch-ua-platform: "Windows"' \
+  -H 'sec-fetch-dest: empty' \
+  -H 'sec-fetch-mode: cors' \
+  -H 'sec-fetch-site: same-origin' \
+  -H 'user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36'
+  
+  
+  
+  curl 'https://supplier.careem.com/api/limo/portal/captain/acceptance/477236?startTime=1733011200000&endTime=1733615999000' \
+  -H 'sec-ch-ua-platform: "Windows"' \
+  -H 'Authorization: Bearer eyJraWQiOiI3MmM5NTU0OS0zZjI4LTRiNTEtOWYyZi02OTdiNTI0NTFkMzUiLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiI2NTk3MzYwNSIsImF1ZCI6ImNvbS5jYXJlZW0uaW50ZXJuYWwiLCJsaW1vX3BvcnRhbFwvc291cmNlX2FwcCI6IkxJTU9fUE9SVEFMIiwiYWNjZXNzX3R5cGUiOiJDVVNUT01FUiIsInVzZXJfaWQiOjY1OTczNjA1LCJhenAiOiIyNjIyZDRhZi1lZGE0LTQyZWMtYTk1NC05NDdlMDk3NGY4MjEuc3VwcGxpZXIuY2FyZWVtLmNvbSIsImtpbmQiOiJDVVNUT01FUiIsInNjb3BlIjoib3BlbmlkIGVkZ2VfY2FwdGFpbiBwcm9maWxlIiwiaXNzIjoiaHR0cHM6XC9cL2lkZW50aXR5LmNhcmVlbS5jb21cLyIsImV4cCI6MTczMzUwMDYyNiwiaWF0IjoxNzMzNDE0MjI2LCJqdGkiOiJjYTAzMTgzNy00MzJkLTQyNDktYThhYS1iZDkzMGFjYTExZmQifQ.ByRk3u7LQ5XWLkeW23iKlxoiTLUOpJsS_xv5pLePe0XV68Jt089EaWsx-YbfxbQGVR8lGCXd72d42WxzU8nnhaDPAxogPsayI2K2hnTtGUMRyk30iTe41GOEdxhiNNbjK7ZMucS1K-cwXF417psqDpaA1HEBTBsnIP_e0mc6O16doOCklGkxc-bdENteUcaERv6EFvaifkWk9neqWfDNunh7-D04jrwmjotWMN4GtQEsE8lcUnvrDwWq7JgPZeL2O4Cmt8MYW3Pz7Xv5Byp5CeBYO2cjq0HGCwNoNk9e8MA_AW_47xGH_dhHeEHhJCRfTf9lOsVdG9kyh6zjE5ElMg' \
+  -H 'Referer: https://supplier.careem.com/v2/dashboard' \
+  -H 'User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36' \
+  -H 'Accept: application/json, text/plain, */*' \
+  -H 'sec-ch-ua: "Google Chrome";v="131", "Chromium";v="131", "Not_A Brand";v="24"' \
+  -H 'sec-ch-ua-mobile: ?0'
+  
+  Bearer eyJraWQiOiI3MmM5NTU0OS0zZjI4LTRiNTEtOWYyZi02OTdiNTI0NTFkMzUiLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiI2NTk3MzYwNSIsImF1ZCI6ImNvbS5jYXJlZW0uaW50ZXJuYWwiLCJsaW1vX3BvcnRhbFwvc291cmNlX2FwcCI6IkxJTU9fUE9SVEFMIiwiYWNjZXNzX3R5cGUiOiJDVVNUT01FUiIsInVzZXJfaWQiOjY1OTczNjA1LCJhenAiOiJlYjMzYjU4OC00NGI2LTQ3Y2QtOWEwYS0wZDA0YWY5MTQ3MDQuY2FwdGFpbi5jYXJlZW0uY29tIiwia2luZCI6IkNVU1RPTUVSIiwic2NvcGUiOiJlZGdlX2NhcHRhaW4gcHJvZmlsZSIsImlzcyI6Imh0dHBzOlwvXC9pZGVudGl0eS5jYXJlZW0uY29tXC8iLCJleHAiOjE3MzM1MDA4NzgsImlhdCI6MTczMzQxNDQ3OCwianRpIjoiMjM0ZGZmZWMtZGFjNS00YTY0LTgyNDMtZDNjMmY3N2M0MmU1In0.KQQr3MgYvHu6PtFMxYpDonxBYVREYk0B4K3vkxSLJRbNVBWGoIpd8l2kdQX5BqMj-i-qVrKLZNWFzgGVClXD_FuNOsyQ8Na00AKvwi32elzv9gwNMySFejuMBc1cfdBZEn5rDicb2vSJ1HebK_Mf1g6TE9gzGMyMM7mEszmRpHIKE1J68MyNWrpr68M1cU1FRc7aKcZ-TNYu8AugRUj07eQFM1ckVh9Tk0O4EQwA5RecrpWqRe-Z2oeS17FrJmghexqYIIGHCR5H_uT3d74LFD3IcmZXG0JWAhdYak0O1wPMGgp0ZJaVwu1FzKGonlN4OdNh0NVMj2G-QChfSWvTzA
+
+
+
+curl 'https://captain.careem.com/api/transaction/3226722?cycleNumber=0&viewParams=\{%22cycleIdx%22:%200\}&viewType=cycle' \
+  -H 'accept: application/json, text/plain, */*' \
+  -H 'accept-language: en-US,en;q=0.9' \
+  -H 'authcaptainid: 3226722' \
+  -H 'authtoken: Bearer eyJraWQiOiI3MmM5NTU0OS0zZjI4LTRiNTEtOWYyZi02OTdiNTI0NTFkMzUiLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiI2NTk3MzYwNSIsImF1ZCI6ImNvbS5jYXJlZW0uaW50ZXJuYWwiLCJsaW1vX3BvcnRhbFwvc291cmNlX2FwcCI6IkxJTU9fUE9SVEFMIiwiYWNjZXNzX3R5cGUiOiJDVVNUT01FUiIsInVzZXJfaWQiOjY1OTczNjA1LCJhenAiOiJlYjMzYjU4OC00NGI2LTQ3Y2QtOWEwYS0wZDA0YWY5MTQ3MDQuY2FwdGFpbi5jYXJlZW0uY29tIiwia2luZCI6IkNVU1RPTUVSIiwic2NvcGUiOiJlZGdlX2NhcHRhaW4gcHJvZmlsZSIsImlzcyI6Imh0dHBzOlwvXC9pZGVudGl0eS5jYXJlZW0uY29tXC8iLCJleHAiOjE3MzM1MDA4NzgsImlhdCI6MTczMzQxNDQ3OCwianRpIjoiMjM0ZGZmZWMtZGFjNS00YTY0LTgyNDMtZDNjMmY3N2M0MmU1In0.KQQr3MgYvHu6PtFMxYpDonxBYVREYk0B4K3vkxSLJRbNVBWGoIpd8l2kdQX5BqMj-i-qVrKLZNWFzgGVClXD_FuNOsyQ8Na00AKvwi32elzv9gwNMySFejuMBc1cfdBZEn5rDicb2vSJ1HebK_Mf1g6TE9gzGMyMM7mEszmRpHIKE1J68MyNWrpr68M1cU1FRc7aKcZ-TNYu8AugRUj07eQFM1ckVh9Tk0O4EQwA5RecrpWqRe-Z2oeS17FrJmghexqYIIGHCR5H_uT3d74LFD3IcmZXG0JWAhdYak0O1wPMGgp0ZJaVwu1FzKGonlN4OdNh0NVMj2G-QChfSWvTzA' \
+  -H 'cookie: _ga_PK41GCWX6X=GS1.2.1733209062.1.0.1733209062.0.0.0; _ga=GA1.1.1658488290.1733209058; crm_sess=eyJpZCI6IkFPUGxRIn0=; crm_sess.sig=GIH4BFkZyHAb8v33PFFc24rXbf8; _hjSessionUser_3371954=eyJpZCI6IjZiZmNlYjg3LTgxMTgtNWI1OC1hN2M0LTI5OGYwN2JhYzU0YSIsImNyZWF0ZWQiOjE3MzMyMDkzNzQ4MjMsImV4aXN0aW5nIjp0cnVlfQ==; _gcl_au=1.1.319209743.1733209731; _ga_M090P5XSSP=GS1.1.1733328963.2.0.1733328963.60.0.1503028854; __cf_bm=5eOQXvmKlb05jUCJ_fDnkCiIP_uGlBq4VVKm3yVWWzk-1733414123-1.0.1.1-VqtpUkgHnOekqBlBrEn5M5lu1K9L7RJQBlhXtGdYl.IIlCiyPmT9slMmRVc68AYxAtuFMi6_NPZfYUcs23oAXw; _hjSession_3371954=eyJpZCI6IjAxN2JhODljLWY1NjYtNDc1Yi1iZTE4LTMyMzA3NDFlOWUxMCIsImMiOjE3MzM0MTQxMjQzODQsInMiOjAsInIiOjAsInNiIjowLCJzciI6MCwic2UiOjAsImZzIjowLCJzcCI6MH0=; _ga_VXZQ802Y3Y=GS1.1.1733414226.3.1.1733414340.0.0.0; cf_clearance=344d6i2sM4142VH1uviNfPljqvbEfWjf0AH1MI56vAc-1733414479-1.2.1.1-UjPepSNi9M6xkKsFeS_QLR4cKdHjyL1MLdfbT6fpop6To7.qKEHW7ws0At1OZIq1l_IT03wNwvq6ob5ytXJ4ID5V64.NSxHRbziVGGitlkWAHj3K7UqxShpchMOQrgMqzRr4Id25Oyzf3t6jQbOlwo02kC1VOriKlkEt.YvzOWAxrJffQU8kKsHbydGky_R4UZRvTjvfiY5r1oZ_u7ERIpx15PfMFbct.TeomdSp4oXAAnmLhbvWaWNhhwCcIHpCI_J52a92ptbX8SCESuiuXeQesBBImSDPqLVbVgbn4tg.WStOmoYb84G2ggFlgCSoEqsEqitfmcFYhj6A.aKIPJqn.HjLq3H_bQmWgTV092sQ901dfjb7xDjI24hEFVdM' \
+  -H 'device: -' \
+  -H 'if-none-match: W/"413f-v0nK+wW1KjGSSI4SO7RGL2KLeVw"' \
+  -H 'language: en' \
+  -H 'priority: u=1, i' \
+  -H 'referer: https://captain.careem.com/v2/main' \
+  -H 'sec-ch-ua: "Google Chrome";v="131", "Chromium";v="131", "Not_A Brand";v="24"' \
+  -H 'sec-ch-ua-mobile: ?0' \
+  -H 'sec-ch-ua-platform: "Windows"' \
+  -H 'sec-fetch-dest: empty' \
+  -H 'sec-fetch-mode: cors' \
+  -H 'sec-fetch-site: same-origin' \
+  -H 'user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36'
+  
+  
+curl 'https://captain.careem.com/api/trip-receipt/1490098542/en' \
+  -H 'accept: application/json, text/plain, */*' \
+  -H 'accept-language: en-US,en;q=0.9' \
+  -H 'authcaptainid: 3226722' \
+  -H 'authtoken: Bearer eyJraWQiOiI3MmM5NTU0OS0zZjI4LTRiNTEtOWYyZi02OTdiNTI0NTFkMzUiLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiI2NTk3MzYwNSIsImF1ZCI6ImNvbS5jYXJlZW0uaW50ZXJuYWwiLCJsaW1vX3BvcnRhbFwvc291cmNlX2FwcCI6IkxJTU9fUE9SVEFMIiwiYWNjZXNzX3R5cGUiOiJDVVNUT01FUiIsInVzZXJfaWQiOjY1OTczNjA1LCJhenAiOiJlYjMzYjU4OC00NGI2LTQ3Y2QtOWEwYS0wZDA0YWY5MTQ3MDQuY2FwdGFpbi5jYXJlZW0uY29tIiwia2luZCI6IkNVU1RPTUVSIiwic2NvcGUiOiJlZGdlX2NhcHRhaW4gcHJvZmlsZSIsImlzcyI6Imh0dHBzOlwvXC9pZGVudGl0eS5jYXJlZW0uY29tXC8iLCJleHAiOjE3MzM1MDA4NzgsImlhdCI6MTczMzQxNDQ3OCwianRpIjoiMjM0ZGZmZWMtZGFjNS00YTY0LTgyNDMtZDNjMmY3N2M0MmU1In0.KQQr3MgYvHu6PtFMxYpDonxBYVREYk0B4K3vkxSLJRbNVBWGoIpd8l2kdQX5BqMj-i-qVrKLZNWFzgGVClXD_FuNOsyQ8Na00AKvwi32elzv9gwNMySFejuMBc1cfdBZEn5rDicb2vSJ1HebK_Mf1g6TE9gzGMyMM7mEszmRpHIKE1J68MyNWrpr68M1cU1FRc7aKcZ-TNYu8AugRUj07eQFM1ckVh9Tk0O4EQwA5RecrpWqRe-Z2oeS17FrJmghexqYIIGHCR5H_uT3d74LFD3IcmZXG0JWAhdYak0O1wPMGgp0ZJaVwu1FzKGonlN4OdNh0NVMj2G-QChfSWvTzA' \
+  -H 'cookie: _ga_PK41GCWX6X=GS1.2.1733209062.1.0.1733209062.0.0.0; _ga=GA1.1.1658488290.1733209058; crm_sess=eyJpZCI6IkFPUGxRIn0=; crm_sess.sig=GIH4BFkZyHAb8v33PFFc24rXbf8; _hjSessionUser_3371954=eyJpZCI6IjZiZmNlYjg3LTgxMTgtNWI1OC1hN2M0LTI5OGYwN2JhYzU0YSIsImNyZWF0ZWQiOjE3MzMyMDkzNzQ4MjMsImV4aXN0aW5nIjp0cnVlfQ==; _gcl_au=1.1.319209743.1733209731; _ga_M090P5XSSP=GS1.1.1733328963.2.0.1733328963.60.0.1503028854; _hjSession_3371954=eyJpZCI6IjAxN2JhODljLWY1NjYtNDc1Yi1iZTE4LTMyMzA3NDFlOWUxMCIsImMiOjE3MzM0MTQxMjQzODQsInMiOjAsInIiOjAsInNiIjowLCJzciI6MCwic2UiOjAsImZzIjowLCJzcCI6MH0=; _ga_VXZQ802Y3Y=GS1.1.1733414226.3.1.1733414340.0.0.0; __cf_bm=aEkreNlhivpX4_XH5WSjfStG6f7lyekESqSnshioQ.s-1733415764-1.0.1.1-BR6MhIojgBh80DpY0QpE4iz81zLz.s.jGznsdGwaIjr9GSO.BRcwSNs_nhW1CPun2qv2EpEWi2yXT.EfehLm6w; cf_clearance=ecYoZmhP446kbMMOinz3WJ2EefaEgUP8K.ybWeiGt1s-1733415766-1.2.1.1-2SjhUpcQZi_L903_LuazbCYnrA2r9z8R2leoYVCZ3JX5sYXsyMW218bUEpp93lXDoA4JFR6F0PGuDWLbR8kySOG8YJP_BwWSt9gTeYLOLskYmYuZnzjcVeJAQVevc4FWYdMci6a1A6_lANWEfmQuY8KOXm4Mczz4UuW3ioMjGVvuYe379WMqxw7ReqX2QPITG0.I7SwJqUgCWxShMLCk8DXwlXJmBIEunAGgLBQ9H5khgqg0J5taiQXdqfaYXAZiJ9S2.WjB.u44OAvnkWuEPSm_qDoXuP2eqBomlItOk_LIWsY87XAcBFf8769GIWkX6TKx9lFmYHugqPDVHU8cR91Qh6S4gwXWR3Y3Z9ngbxFoUhjfBy1p_Po7vT7PJU01' \
+  -H 'device: -' \
+  -H 'if-none-match: W/"1312-9W0Ab6/rWovCMu8qKthWs4JYA4w"' \
+  -H 'language: en' \
+  -H 'priority: u=1, i' \
+  -H 'referer: https://captain.careem.com/v2/trip-receipt/1490098542' \
+  -H 'sec-ch-ua: "Google Chrome";v="131", "Chromium";v="131", "Not_A Brand";v="24"' \
+  -H 'sec-ch-ua-mobile: ?0' \
+  -H 'sec-ch-ua-platform: "Windows"' \
+  -H 'sec-fetch-dest: empty' \
+  -H 'sec-fetch-mode: cors' \
+  -H 'sec-fetch-site: same-origin' \
+  -H 'user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36'
+
+
+
+
+curl 'https://supplier.careem.com/api/limo/portal/captain/acceptance/477236?startTime=1733011200000&endTime=1733356799000' \
+  -H 'sec-ch-ua-platform: "Windows"' \
+  -H 'Authorization: Bearer eyJraWQiOiJjYjIyMmE0' \
+  -H 'Referer: https://supplier.careem.com/v2/dashboard' \
+  -H 'User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36' \
+  -H 'Accept: application/json, text/plain, */*' \
+  -H 'sec-ch-ua: "Google Chrome";v="131", "Chromium";v="131", "Not_A Brand";v="24"' \
+  -H 'sec-ch-ua-mobile: ?0'
+  
+[
+    {
+        "captainId": 3237536,
+        "accepted": 0,
+        "rejected": 0,
+        "timedOut": 0,
+        "totalOffers": 0,
+        "acceptanceRate": 1.0
+    },
+    {
+        "captainId": 3225922,
+        "accepted": 0,
+        "rejected": 0,
+        "timedOut": 0,
+        "totalOffers": 0,
+        "acceptanceRate": 1.0
+    },
+    {
+        "captainId": 3236412,
+        "accepted": 6,
+        "rejected": 0,
+        "timedOut": 0,
+        "totalOffers": 6,
+        "acceptanceRate": 1.0
+    }
+]
+
+---
+
+curl 'https://captain.careem.com/api/transaction/3226232?cycleNumber=0&viewParams=\{%22cycleIdx%22:%200\}&viewType=cycle' \
+  -H 'accept: application/json, text/plain, */*' \
+  -H 'accept-language: en-US,en;q=0.9' \
+  -H 'authcaptainid: 3226232' \
+  -H 'authtoken: Bearer eyJraWQiOiJjYjIyMmE0ZS1hYzlmLTQ3YzQtOGE5Mi02YWEwYjAyNTE1YmIiLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiI2NTk3MzYwNSIsImF1ZCI6ImNvbS5jYXJlZW0uaW50ZXJuYWwiLCJsaW1vX3BvcnRhbFwvc291cmNlX2FwcCI6IkxJTU9fUE9SVEFMIiwiYWNjZXNzX3R5cGUiOiJDVVNUT01FUiIsInVzZXJfaWQiOjY1OTczNjA1LCJhenAiOiJlYjMzYjU4OC00NGI2LTQ3Y2QtOWEwYS0wZDA0YWY5MTQ3MDQuY2FwdGFpbi5jYXJlZW0uY29tIiwia2luZCI6IkNVU1RPTUVSIiwic2NvcGUiOiJlZGdlX2NhcHRhaW4gcHJvZmlsZSIsImlzcyI6Imh0dHBzOlwvXC9pZGVudGl0eS5jYXJlZW0uY29tXC8iLCJleHAiOjE3MzM0MTQyMzcsImlhdCI6MTczMzMyNzgzNywianRpIjoiZmM4ODk3YTYtMmJlMC00YzNiLTk3MjMtNWJlZTVhODk4YTI3In0.Cv4FBKNbzBVhIIQqrnqy5p4CTt4qkjSxPJqf6WB0msseoHO8xVgk7laVI4lCFurFSIzF5ECyfHVb6k9pGNSJ6XAP---kiXRoPuBAzQP4qrgm547udapTRMqLpT8hYKTT4SJeBLn1-amQ4m6F2PiUeXN5tE8gzxfDNjhb6LZlQ8jvZDN51qRn68jKk7lXQvf0IMza9ArxsapOwUPYGCr5FpIa-GmtcOj5PsKrLzEGSYJLw7NJzEv7qmunYU__HhlYpnc31qmxJcpVYxF1-1w0zU25SZu_MHyNyo7_Xlc_uvOmGTax8j1O5ZhUJFn08oTwJU_5x-E1BnS25npE2HHrfQ' \
+  -H 'cookie: _ga_PK41GCWX6X=GS1.2.1733209062.1.0.1733209062.0.0.0; _ga=GA1.1.1658488290.1733209058; crm_sess=eyJpZCI6IkFPUGxRIn0=; crm_sess.sig=GIH4BFkZyHAb8v33PFFc24rXbf8; _hjSessionUser_3371954=eyJpZCI6IjZiZmNlYjg3LTgxMTgtNWI1OC1hN2M0LTI5OGYwN2JhYzU0YSIsImNyZWF0ZWQiOjE3MzMyMDkzNzQ4MjMsImV4aXN0aW5nIjp0cnVlfQ==; _gcl_au=1.1.319209743.1733209731; _ga_M090P5XSSP=GS1.1.1733209732.1.0.1733209734.58.0.890373008; _ga_VXZQ802Y3Y=GS1.1.1733327576.2.1.1733327578.0.0.0; __cf_bm=rzEUmu9dg.Xfy_Tblo1Ukme33z5FMjZELcjTi6uyf04-1733327786-1.0.1.1-gtjeVZKKM6WkAnYKkDQ2b5ubYHpyfOh3jNf1RPXXo0l5xSdHpRuU.GhrEcUh_Y.zyhUr8oyHeYc3piqLDhTAoA; _hjSession_3371954=eyJpZCI6ImIyMjVmMzY4LTBjMmQtNGZiMC04NTY2LTk1M2E0NDAwOTY3MyIsImMiOjE3MzMzMjc3ODUzNjEsInMiOjAsInIiOjAsInNiIjowLCJzciI6MCwic2UiOjAsImZzIjowLCJzcCI6MX0=; cf_clearance=YehZV7dCRob91ZC4pLVbOfNzx.ML6geUC5HD5NPn7OQ-1733327792-1.2.1.1-Ev5de12d872dckegPLcLZRIx3.1aovoqdWSeVkoz.SZJ34BHiCHzKKBesBdiQdSqc5QtMautUtG0xnqkyqZYEysX_DNKcVAhrqW8eCRQROitqNBFCsgefArkDG1NG1QOA8ySq4kc9Y4OOsQKOgKJeD5qWzW7Ud0.W2NTGfa4sWiG.GwVU7z._sn5171kDxiRa6EM2JyP3DZJb6VmDAfBjg_DhjcoCLAbeqMWMQ5tLMvcBdvBXZuHU7NL5B_.QbPerUG5QFmYTusDAK.NgciBQliJntLiqU17Vu5lwJ1JF64JZPUyhmbA5fy4mfJ3WvPyJk_AcUrdtQ6s_RMnhjDyAWu4UOi2csFiCmazzlVLL2MktBer.YBSZeh2fiKQJrwr' \
+  -H 'device: -' \
+  -H 'if-none-match: W/"1e3d-gYFRGoStTNhfHgV1L8+/KS1hhm0"' \
+  -H 'language: en' \
+  -H 'priority: u=1, i' \
+  -H 'referer: https://captain.careem.com/v2/main' \
+  -H 'sec-ch-ua: "Google Chrome";v="131", "Chromium";v="131", "Not_A Brand";v="24"' \
+  -H 'sec-ch-ua-mobile: ?0' \
+  -H 'sec-ch-ua-platform: "Windows"' \
+  -H 'sec-fetch-dest: empty' \
+  -H 'sec-fetch-mode: cors' \
+  -H 'sec-fetch-site: same-origin' \
+  -H 'user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36'
+  
+ {
+    "captainProfile": {
+        "captainProfileDto": {
+            "captainId": 3226722,
+            "captainName": "Junaid Saeed",
+            "captainPhone": "971565958530",
+            "captainEmail": null,
+            "firstName": "Junaid",
+            "lastName": "Saeed",
+            "picture": "https://careem.s3.eu-west-1.amazonaws.com/images/driver/3226722.jpg?X-Amz-Security-Token=IQoJb3JpZ2luX2VjEEUaCWV1LXdlc3QtMSJHMEUCIQD1npOpbL6btrlVZ66YFvLp26oXbDdP%2BMLx0wgxzPsrLQIgUTIwunBn2Pu7%2Fh%2Fx%2F%2Fj806ojH1tm0bP9xswWGGCsMk0quQUI7v%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FARAAGgw2MTcxNzE2OTc2NDUiDGBAW3gyH3COvEOi9CqNBXuvNUYNpGDN%2BmQ%2FTDynmkiJMlN%2BRg3uXbe3wk20VCQQfKIpu0y1emeCX6JXgx674Ve%2BVZ0eNAQuRSpz3iLvTXdCpUldX7oVY3zqxuczkdDntNE%2FwwxV2S42Yd7Mfc6X4VdbCw2PfPdhc3hDtNvRrqSdgGTx4tnzTzK1ocdQzXsjlU1FzoKnOKkQtd3eWD5vXdPxsS0iYXydzNfdUVPqztTf%2FBlN9rpEcjUODAS%2BdO3pRakQtNRfOqAGuX6N4j8jT%2Fxlv3RK9DM53MprNmgaE4c2TFjQ06nDey9bZweoctzlT5ZfVi6VoaQJu0%2FGOjsmXbPE36K%2FZaVuFmyor9m14AauuxQKUVXuf6xm4VRVTTG8iLUGPMoIXeB1qUoh1Zw%2BuhWaPcY4znMSTZ4nrFekMShaR3bxbWZohtRSFYP9We6u8jxhB8fMK72eKT4e6Zj7qCTcLhRXc8QyazUAf324XqDZ4zLkcV4dL1Va7esGEcl7JP1KmsHsPF%2BQ3vxb3f%2BKwj2KlCjZ42P4vkBAdIrlaR%2BUOj0lbTb6OPieE3RIlqmOWBUaedtT2qJt1zKshh4IrmCh5immtwHI%2FVtHdYr7hlJk0%2BDK5ytcIgGc2Hq7jSQlcMLE77sM90j4Aiew%2B0cQgHbDViLfolJSEETTasb02P6C3kiGQDjEd0fHXV2WVbbM%2FruGhNePBIJBb%2Bpq7LQ0A1Tqa75jWxzarSFpqd7iEB5Pc7JGMXbzzIHlSWxtreOhp2%2BSI6Aa0v0fuoWEHDsIgRoL7DrsGFd73i4HcbztGMaixdSIkY4cIVMh370hEQ57IlRhI8LonZ2rveUKk0YjHFpmsMF9hVU0sLFDAHVYm8JBHSnqfvDYLCGq9ImXMLmjwboGOrEBD40GM2RIaY%2F8RnRgJ0fiz9hIKzjTtWzg%2FS3A47T8KGxW3e8v5ro1%2BCFKtnYqtsgzpP9LCBolUo7ypYwUXQN9B0IN7nmhBwn4tg8IPPK4C1s1EwamQpaJ%2FVO2CUR91w6aivruoILRdxKd%2FOILcJt9PjYoe2ywHz08vgYWAPuHsll83E2FAEnW7m%2BkQ2CXxXsAXdViVkVi6y1hYYqTIU3uMJdSQK2j6aNFoQ%2B3GBB%2BKDix&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20241204T132317Z&X-Amz-SignedHeaders=host&X-Amz-Expires=21600&X-Amz-Credential=ASIAY7MSMX7WV3B6KTBH%2F20241204%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Signature=c67d02fc4f8afa11cbc53a0a04059a2908185f2099039f7456a93e318baf8eed",
+            "currencyId": 1,
+            "currencyCode": "AED",
+            "currencyName": "Dirham",
+            "creationDate": 1699855132000,
+            "countryOffsetFromGmt": 4,
+            "cityId": 1,
+            "cityName": "Dubai",
+            "countryId": 1,
+            "countryName": "United Arab Emirates",
+            "countryCode": "UAE",
+            "limoCompanyId": 477236,
+            "limoCompanyName": "Swiss Luxury Limousine LLC",
+            "defaultPaymentMethod": 22,
+            "loyaltyProgramStatus": 3,
+            "languageId": 2,
+            "languageName": "English",
+            "languageCode": "en",
+            "nic": {
+                "documentType": 1,
+                "id": 3081724,
+                "documentNumber": "784199631614643",
+                "issueDate": null,
+                "expiryDate": null,
+                "driverId": 3226722
+            },
+            "joinDate": 1699855132000,
+            "identityId": 54760825,
+            "tier": 3,
+            "dctId": 2907,
+            "domain": "RH"
+        },
+        "carProfileDto": {
+            "carId": 3189156,
+            "carMake": "Lexus",
+            "carModel": "ES300H",
+            "licensePlate": "L47511",
+            "carColor": "White",
+            "passengerCapacity": 4,
+            "carBuildYear": 2023
+        },
+        "isIndividual": false
+    },
+    "paymentMethod": null,
+    "lastPayment": null,
+    "verifiedEarningPromise": {
+        "captainId": 3226722,
+        "captainName": "Junaid Saeed",
+        "cityId": 1,
+        "cityName": "Dubai",
+        "countryId": 1,
+        "countryName": "United Arab Emirates",
+        "gmtOffset": 4,
+        "currency": {
+            "id": 1,
+            "displayCode": "AED",
+            "name": "Dirham",
+            "symbol": "AED",
+            "displayOnWeb": 0,
+            "decimalScaling": 2,
+            "driverDecimalScaling": 2
+        },
+        "startTimestamp": 1733011200000,
+        "endTimestamp": 1733615999000,
+        "driverPaymentId": 572331992,
+        "previousDriverPaymentId": 570064441,
+        "inProcessCycleStartTime": 1733011200000,
+        "inProcessCycleCount": 1,
+        "activeBalance": 310.21,
+        "captainTransactions": [
+            {
+                "transactionId": 1490098542,
+                "uuid": "59d29201-f990-408b-9501-b912df5d1e65",
+                "transactionType": "TRIP",
+                "captainId": 3226722,
+                "driverPaymentId": 572331992,
+                "transactionDate": 1733065269000,
+                "transactionTypeId": 63,
+                "adjustmentCategoryId": null,
+                "adjustmentCategoryName": "Trip Earnings",
+                "earning": 18.17,
+                "realisedEarning": 18.17,
+                "adjustmentId": null,
+                "routeId": 1417784899,
+                "routeOutcome": 3,
+                "associatedTrips": [
+                    {
+                        "tripId": 1490098542,
+                        "tripOutcome": 3,
+                        "bookingId": 2075850906,
+                        "bookingStatus": 6,
+                        "verified": 1,
+                        "waived": 0,
+                        "routeId": 1417784899,
+                        "cctId": 121,
+                        "cctName": "Comfort",
+                        "pooling": false
+                    }
+                ],
+                "associatedCampaign": null,
+                "comment": null,
+                "isPooling": false,
+                "verifiedDriver": true,
+                "waivedForDriver": false,
+                "campaignIdentifier": null,
+                "customerCarTypeName": "Comfort",
+                "businessReferenceId": "1490098542-TRIP_EARNING",
+                "cleared": true,
+                "enableCaptainPortalApiV2": true
+            },
+            {
+                "transactionId": 1490379412,
+                "uuid": "b481c49a-017c-4eff-9657-c1454b66f14c",
+                "transactionType": "TRIP",
+                "captainId": 3226722,
+                "driverPaymentId": 572331992,
+                "transactionDate": 1733125661000,
+                "transactionTypeId": 63,
+                "adjustmentCategoryId": null,
+                "adjustmentCategoryName": "Trip Earnings",
+                "earning": 13.81,
+                "realisedEarning": 13.81,
+                "adjustmentId": null,
+                "routeId": 1418065431,
+                "routeOutcome": 3,
+                "associatedTrips": [
+                    {
+                        "tripId": 1490379412,
+                        "tripOutcome": 3,
+                        "bookingId": 2076195401,
+                        "bookingStatus": 6,
+                        "verified": 1,
+                        "waived": 0,
+                        "routeId": 1418065431,
+                        "cctId": 121,
+                        "cctName": "Comfort",
+                        "pooling": false
+                    }
+                ],
+                "associatedCampaign": null,
+                "comment": null,
+                "isPooling": false,
+                "verifiedDriver": true,
+                "waivedForDriver": false,
+                "campaignIdentifier": null,
+                "customerCarTypeName": "Comfort",
+                "businessReferenceId": "1490379412-TRIP_EARNING",
+                "cleared": true,
+                "enableCaptainPortalApiV2": true
+            },
+            {
+                "transactionId": 1490500204,
+                "uuid": "31827173-341e-47f0-8f1f-55ea76624a62",
+                "transactionType": "TRIP",
+                "captainId": 3226722,
+                "driverPaymentId": 572331992,
+                "transactionDate": 1733139941000,
+                "transactionTypeId": 63,
+                "adjustmentCategoryId": null,
+                "adjustmentCategoryName": "Trip Earnings",
+                "earning": 26.67,
+                "realisedEarning": 26.67,
+                "adjustmentId": null,
+                "routeId": 1418186061,
+                "routeOutcome": 3,
+                "associatedTrips": [
+                    {
+                        "tripId": 1490500204,
+                        "tripOutcome": 3,
+                        "bookingId": 2076338592,
+                        "bookingStatus": 6,
+                        "verified": 1,
+                        "waived": 0,
+                        "routeId": 1418186061,
+                        "cctId": 121,
+                        "cctName": "Comfort",
+                        "pooling": false
+                    }
+                ],
+                "associatedCampaign": null,
+                "comment": null,
+                "isPooling": false,
+                "verifiedDriver": true,
+                "waivedForDriver": false,
+                "campaignIdentifier": null,
+                "customerCarTypeName": "Comfort",
+                "businessReferenceId": "1490500204-TRIP_EARNING",
+                "cleared": true,
+                "enableCaptainPortalApiV2": true
+            },
+            {
+                "transactionId": 1491152489,
+                "uuid": "3f6e0e4b-773e-4ea7-89bd-8caceef0e4da",
+                "transactionType": "TRIP",
+                "captainId": 3226722,
+                "driverPaymentId": 572331992,
+                "transactionDate": 1733239021000,
+                "transactionTypeId": 63,
+                "adjustmentCategoryId": null,
+                "adjustmentCategoryName": "Trip Earnings",
+                "earning": 23.21,
+                "realisedEarning": 23.21,
+                "adjustmentId": null,
+                "routeId": 1418837518,
+                "routeOutcome": 3,
+                "associatedTrips": [
+                    {
+                        "tripId": 1491152489,
+                        "tripOutcome": 3,
+                        "bookingId": 2077141555,
+                        "bookingStatus": 6,
+                        "verified": 1,
+                        "waived": 0,
+                        "routeId": 1418837518,
+                        "cctId": 121,
+                        "cctName": "Comfort",
+                        "pooling": false
+                    }
+                ],
+                "associatedCampaign": null,
+                "comment": null,
+                "isPooling": false,
+                "verifiedDriver": true,
+                "waivedForDriver": false,
+                "campaignIdentifier": null,
+                "customerCarTypeName": "Comfort",
+                "businessReferenceId": "1491152489-TRIP_EARNING",
+                "cleared": true,
+                "enableCaptainPortalApiV2": true
+            },
+            {
+                "transactionId": 1491451088,
+                "uuid": "44bce1ab-0362-447e-96e8-f729e22b6217",
+                "transactionType": "TRIP",
+                "captainId": 3226722,
+                "driverPaymentId": 572331992,
+                "transactionDate": 1733299086000,
+                "transactionTypeId": 63,
+                "adjustmentCategoryId": null,
+                "adjustmentCategoryName": "Trip Earnings",
+                "earning": 23.29,
+                "realisedEarning": 23.29,
+                "adjustmentId": null,
+                "routeId": 1419135742,
+                "routeOutcome": 3,
+                "associatedTrips": [
+                    {
+                        "tripId": 1491451088,
+                        "tripOutcome": 3,
+                        "bookingId": 2077499196,
+                        "bookingStatus": 6,
+                        "verified": 1,
+                        "waived": 0,
+                        "routeId": 1419135742,
+                        "cctId": 121,
+                        "cctName": "Comfort",
+                        "pooling": false
+                    }
+                ],
+                "associatedCampaign": null,
+                "comment": null,
+                "isPooling": false,
+                "verifiedDriver": true,
+                "waivedForDriver": false,
+                "campaignIdentifier": null,
+                "customerCarTypeName": "Comfort",
+                "businessReferenceId": "1491451088-TRIP_EARNING",
+                "cleared": true,
+                "enableCaptainPortalApiV2": true
+            },
+            {
+                "transactionId": 1491488613,
+                "uuid": "992b39e7-327c-46ee-8fff-77426ca02dad",
+                "transactionType": "TRIP",
+                "captainId": 3226722,
+                "driverPaymentId": 572331992,
+                "transactionDate": 1733303350000,
+                "transactionTypeId": 63,
+                "adjustmentCategoryId": null,
+                "adjustmentCategoryName": "Trip Earnings",
+                "earning": 44.39,
+                "realisedEarning": 44.39,
+                "adjustmentId": null,
+                "routeId": 1419173185,
+                "routeOutcome": 3,
+                "associatedTrips": [
+                    {
+                        "tripId": 1491488613,
+                        "tripOutcome": 3,
+                        "bookingId": 2077545800,
+                        "bookingStatus": 6,
+                        "verified": 1,
+                        "waived": 0,
+                        "routeId": 1419173185,
+                        "cctId": 121,
+                        "cctName": "Comfort",
+                        "pooling": false
+                    }
+                ],
+                "associatedCampaign": null,
+                "comment": null,
+                "isPooling": false,
+                "verifiedDriver": true,
+                "waivedForDriver": false,
+                "campaignIdentifier": null,
+                "customerCarTypeName": "Comfort",
+                "businessReferenceId": "1491488613-TRIP_EARNING",
+                "cleared": true,
+                "enableCaptainPortalApiV2": true
+            },
+            {
+                "transactionId": 1491508885,
+                "uuid": "c0b24109-2b9f-4936-9c0d-fe0265303f2b",
+                "transactionType": "TRIP",
+                "captainId": 3226722,
+                "driverPaymentId": 572331992,
+                "transactionDate": 1733305497000,
+                "transactionTypeId": 63,
+                "adjustmentCategoryId": null,
+                "adjustmentCategoryName": "Trip Earnings",
+                "earning": 23.94,
+                "realisedEarning": 23.94,
+                "adjustmentId": null,
+                "routeId": 1419193399,
+                "routeOutcome": 3,
+                "associatedTrips": [
+                    {
+                        "tripId": 1491508885,
+                        "tripOutcome": 3,
+                        "bookingId": 2077569194,
+                        "bookingStatus": 6,
+                        "verified": 1,
+                        "waived": 0,
+                        "routeId": 1419193399,
+                        "cctId": 121,
+                        "cctName": "Comfort",
+                        "pooling": false
+                    }
+                ],
+                "associatedCampaign": null,
+                "comment": null,
+                "isPooling": false,
+                "verifiedDriver": true,
+                "waivedForDriver": false,
+                "campaignIdentifier": null,
+                "customerCarTypeName": "Comfort",
+                "businessReferenceId": "1491508885-TRIP_EARNING",
+                "cleared": true,
+                "enableCaptainPortalApiV2": true
+            },
+            {
+                "transactionId": 1491623061,
+                "uuid": "ce7759ac-648e-4749-9b63-762712693361",
+                "transactionType": "TRIP",
+                "captainId": 3226722,
+                "driverPaymentId": 572331992,
+                "transactionDate": 1733316465000,
+                "transactionTypeId": 63,
+                "adjustmentCategoryId": null,
+                "adjustmentCategoryName": "Trip Earnings",
+                "earning": 55.22,
+                "realisedEarning": 55.22,
+                "adjustmentId": null,
+                "routeId": 1419307436,
+                "routeOutcome": 3,
+                "associatedTrips": [
+                    {
+                        "tripId": 1491623061,
+                        "tripOutcome": 3,
+                        "bookingId": 2077708867,
+                        "bookingStatus": 6,
+                        "verified": 1,
+                        "waived": 0,
+                        "routeId": 1419307436,
+                        "cctId": 121,
+                        "cctName": "Comfort",
+                        "pooling": false
+                    }
+                ],
+                "associatedCampaign": null,
+                "comment": null,
+                "isPooling": false,
+                "verifiedDriver": true,
+                "waivedForDriver": false,
+                "campaignIdentifier": null,
+                "customerCarTypeName": "Comfort",
+                "businessReferenceId": "1491623061-TRIP_EARNING",
+                "cleared": true,
+                "enableCaptainPortalApiV2": true
+            },
+            {
+                "transactionId": 1491669885,
+                "uuid": "66ec1e27-d2d8-4542-9eb5-41a9948d160f",
+                "transactionType": "TRIP",
+                "captainId": 3226722,
+                "driverPaymentId": 572331992,
+                "transactionDate": 1733320552000,
+                "transactionTypeId": 63,
+                "adjustmentCategoryId": null,
+                "adjustmentCategoryName": "Trip Earnings",
+                "earning": 81.5,
+                "realisedEarning": 81.5,
+                "adjustmentId": null,
+                "routeId": 1419354243,
+                "routeOutcome": 3,
+                "associatedTrips": [
+                    {
+                        "tripId": 1491669885,
+                        "tripOutcome": 3,
+                        "bookingId": 2077768743,
+                        "bookingStatus": 6,
+                        "verified": 1,
+                        "waived": 0,
+                        "routeId": 1419354243,
+                        "cctId": 121,
+                        "cctName": "Comfort",
+                        "pooling": false
+                    }
+                ],
+                "associatedCampaign": null,
+                "comment": null,
+                "isPooling": false,
+                "verifiedDriver": true,
+                "waivedForDriver": false,
+                "campaignIdentifier": null,
+                "customerCarTypeName": "Comfort",
+                "businessReferenceId": "1491669885-TRIP_EARNING",
+                "cleared": true,
+                "enableCaptainPortalApiV2": true
+            }
+        ]
+    },
+    "unVerifiedEarningPromise": {
+        "captainId": 3226722,
+        "captainName": "Junaid Saeed",
+        "cityId": 1,
+        "cityName": "Dubai",
+        "countryId": 1,
+        "countryName": "United Arab Emirates",
+        "gmtOffset": 4,
+        "currency": {
+            "id": 1,
+            "displayCode": "AED",
+            "name": "Dirham",
+            "symbol": "AED",
+            "displayOnWeb": 0,
+            "decimalScaling": 2,
+            "driverDecimalScaling": 2
+        },
+        "startTimestamp": null,
+        "endTimestamp": null,
+        "driverPaymentId": null,
+        "previousDriverPaymentId": 562532638,
+        "inProcessCycleStartTime": 1733011200000,
+        "inProcessCycleCount": 1,
+        "activeBalance": 310.21,
+        "captainTransactions": []
+    },
+    "cashBalanceStatus": {
+        "id": 3226722,
+        "accountType": null,
+        "phoneNumber": "971565958530",
+        "name": "Junaid Saeed",
+        "approvedForCashTrip": 1,
+        "balance": 310.21,
+        "unclearedBalance": 0,
+        "unclearedBalanceBreakdown": {
+            "balance": 0,
+            "earnings": 0,
+            "cashCollection": 0,
+            "earningsIncluded": false
+        },
+        "currency": "AED",
+        "currencyDecimalScaling": null,
+        "warningCashLimit": 190,
+        "blockingCashLimit": 210,
+        "cityId": 1,
+        "countryId": 1,
+        "currencyId": 1,
+        "nextWeeklyPaymentDate": null
+    },
+    "isPayoutInEnabled": false,
+    "isPaymentRequestsEnabled": false,
+    "isCardPaymentEnabled": false,
+    "canAddMultiplePayoutMethods": true,
+    "showBusPerformance": false,
+    "isStreakEnabled": false,
+    "isAggregateSawaTripEnabled": false,
+    "isRouteEarningEnabled": false,
+    "isTaxRevenueEnabled": true,
+    "isTaxInvoiceEnabled": true,
+    "isCaptainPayoutStatusEnabled": false,
+    "toggles": {
+        "message": "API rate limit exceeded",
+        "request_id": "57257d3855f07d425c17d97759379272"
+    },
+    "totalTimeConsumed": 165,
+    "timeConsumedDetails": [
+        {
+            "captainProfile": 85,
+            "parallel": false
+        },
+        {
+            "toggles": 9,
+            "parallel": false
+        },
+        {
+            "getPayoutInfo": 26,
+            "parallel": true
+        },
+        {
+            "/captain/portal/earnings/3226722/lastPayments": 42,
+            "parallel": true
+        },
+        {
+            "/captain/portal/earnings/transaction/3226722/cycleNumber/0": 70,
+            "parallel": true
+        },
+        {
+            "/captain/portal/earnings/transaction/3226722/unverifiedTransactions": 54,
+            "parallel": true
+        },
+        {
+            "/captain/portal/getBalanceAndCashStatus/3226722": 50,
+            "parallel": true
+        }
+    ],
+    "earningsUrl": "https://earning-dashboard.careem-engineering.com/#/",
+    "careemPayUrl": "https://pay.careem.com/"
+}
+
+---
+
+curl 'https://captain.careem.com/api/trip-receipt/1490098542/en' \
+  -H 'accept: application/json, text/plain, */*' \
+  -H 'accept-language: en-US,en;q=0.9' \
+  -H 'authcaptainid: 3226722' \
+  -H 'authtoken: Bearer eyJraWQiOiJjYjIyMmE0ZS1hYzlmLTQ3YzQtOGE5Mi02YWEwYjAyNTE1YmIiLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiI2NTk3MzYwNSIsImF1ZCI6ImNvbS5jYXJlZW0uaW50ZXJuYWwiLCJsaW1vX3BvcnRhbFwvc291cmNlX2FwcCI6IkxJTU9fUE9SVEFMIiwiYWNjZXNzX3R5cGUiOiJDVVNUT01FUiIsInVzZXJfaWQiOjY1OTczNjA1LCJhenAiOiJlYjMzYjU4OC00NGI2LTQ3Y2QtOWEwYS0wZDA0YWY5MTQ3MDQuY2FwdGFpbi5jYXJlZW0uY29tIiwia2luZCI6IkNVU1RPTUVSIiwic2NvcGUiOiJlZGdlX2NhcHRhaW4gcHJvZmlsZSIsImlzcyI6Imh0dHBzOlwvXC9pZGVudGl0eS5jYXJlZW0uY29tXC8iLCJleHAiOjE3MzM0MTQzMDgsImlhdCI6MTczMzMyNzkwOCwianRpIjoiMjI0YzlhNmYtZjQ0Ni00YjJkLThkODQtZjgxMGU4NzczZjE1In0.ArQNjzfApEhRxqeC7LuJfAAEktQAgxp4AiLAIfmRo9wq1UIjpdabqQDU83dBywclSh7BaDyCTPQ-6Ej_KoSfU6NBrkxmfxIFOjbYbN0Tu_ScK6JewH6tGA93HumwVu8hO85NAixmroXBE1NNBVIW_KGEf5AwkLsePVteCwq2G1WRWHG7D-948RKgccZ-vm2cvOMG0jRfo8yDth3t9H0Pz8poD7E-t50u26Yy6k9quMt5Jv7wXWNH462m3GDzLulbijj9mj5TXVlUNPGThsbzOmDQUALT8o2o-_kvaPF2UkEs_qyslazLxzgltYFHolep_xFg-V91lpBQ0WwP-9I8yw' \
+  -H 'cookie: _ga_PK41GCWX6X=GS1.2.1733209062.1.0.1733209062.0.0.0; _ga=GA1.1.1658488290.1733209058; crm_sess=eyJpZCI6IkFPUGxRIn0=; crm_sess.sig=GIH4BFkZyHAb8v33PFFc24rXbf8; _hjSessionUser_3371954=eyJpZCI6IjZiZmNlYjg3LTgxMTgtNWI1OC1hN2M0LTI5OGYwN2JhYzU0YSIsImNyZWF0ZWQiOjE3MzMyMDkzNzQ4MjMsImV4aXN0aW5nIjp0cnVlfQ==; _gcl_au=1.1.319209743.1733209731; _ga_M090P5XSSP=GS1.1.1733209732.1.0.1733209734.58.0.890373008; _ga_VXZQ802Y3Y=GS1.1.1733327576.2.1.1733327578.0.0.0; __cf_bm=rzEUmu9dg.Xfy_Tblo1Ukme33z5FMjZELcjTi6uyf04-1733327786-1.0.1.1-gtjeVZKKM6WkAnYKkDQ2b5ubYHpyfOh3jNf1RPXXo0l5xSdHpRuU.GhrEcUh_Y.zyhUr8oyHeYc3piqLDhTAoA; _hjSession_3371954=eyJpZCI6ImIyMjVmMzY4LTBjMmQtNGZiMC04NTY2LTk1M2E0NDAwOTY3MyIsImMiOjE3MzMzMjc3ODUzNjEsInMiOjAsInIiOjAsInNiIjowLCJzciI6MCwic2UiOjAsImZzIjowLCJzcCI6MX0=; cf_clearance=YehZV7dCRob91ZC4pLVbOfNzx.ML6geUC5HD5NPn7OQ-1733327792-1.2.1.1-Ev5de12d872dckegPLcLZRIx3.1aovoqdWSeVkoz.SZJ34BHiCHzKKBesBdiQdSqc5QtMautUtG0xnqkyqZYEysX_DNKcVAhrqW8eCRQROitqNBFCsgefArkDG1NG1QOA8ySq4kc9Y4OOsQKOgKJeD5qWzW7Ud0.W2NTGfa4sWiG.GwVU7z._sn5171kDxiRa6EM2JyP3DZJb6VmDAfBjg_DhjcoCLAbeqMWMQ5tLMvcBdvBXZuHU7NL5B_.QbPerUG5QFmYTusDAK.NgciBQliJntLiqU17Vu5lwJ1JF64JZPUyhmbA5fy4mfJ3WvPyJk_AcUrdtQ6s_RMnhjDyAWu4UOi2csFiCmazzlVLL2MktBer.YBSZeh2fiKQJrwr' \
+  -H 'device: -' \
+  -H 'if-none-match: W/"1312-9W0Ab6/rWovCMu8qKthWs4JYA4w"' \
+  -H 'language: en' \
+  -H 'priority: u=1, i' \
+  -H 'referer: https://captain.careem.com/v2/trip-receipt/1490098542' \
+  -H 'sec-ch-ua: "Google Chrome";v="131", "Chromium";v="131", "Not_A Brand";v="24"' \
+  -H 'sec-ch-ua-mobile: ?0' \
+  -H 'sec-ch-ua-platform: "Windows"' \
+  -H 'sec-fetch-dest: empty' \
+  -H 'sec-fetch-mode: cors' \
+  -H 'sec-fetch-site: same-origin' \
+  -H 'user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36'
+
+{
+    "data": {
+        "tripDate": "Sunday, 1 Dec, 15:01 PM",
+        "earnings": "AED 18.17",
+        "carInfo": {
+            "customerCarTypeId": 121,
+            "serviceAreaId": 1,
+            "displayName": "Comfort",
+            "imageUrl": "https://s3-eu-west-1.amazonaws.com/prod-cct-category-images/images/6a670ad05c62489cae70db1ed332b6d1.png"
+        },
+        "sections": [
+            {
+                "type": "TripDetailsSection",
+                "locations": {
+                    "locations": [
+                        {
+                            "mainLine": {
+                                "type": "UILocationLine",
+                                "text": "Careem Pick-up Point",
+                                "style": "PRIMARY_TEXT"
+                            },
+                            "secondaryLine": {
+                                "type": "UILocationLine",
+                                "text": "Marina Mall, Marina Mall, Marina, Dubai",
+                                "style": "SECONDARY_TEXT"
+                            }
+                        },
+                        {
+                            "mainLine": {
+                                "type": "UILocationLine",
+                                "text": "Stella Di Mare Dubai Marina Hotel",
+                                "style": "PRIMARY_TEXT"
+                            },
+                            "secondaryLine": {
+                                "type": "UILocationLine",
+                                "text": "Al Mattla'ee Street, Dubai, Dubai",
+                                "style": "SECONDARY_TEXT"
+                            }
+                        }
+                    ],
+                    "style": "LOCATION_PATH_GREEN"
+                },
+                "lines": [
+                    {
+                        "type": "UITextLine",
+                        "left": "Booking ID",
+                        "right": "2075850906",
+                        "showOnlyOnExpanded": null,
+                        "tooltipText": null,
+                        "icon": null,
+                        "position": null,
+                        "style": "PRIMARY_TEXT"
+                    },
+                    {
+                        "type": "UITextLine",
+                        "left": "Car",
+                        "right": "ES300H",
+                        "showOnlyOnExpanded": null,
+                        "tooltipText": null,
+                        "icon": null,
+                        "position": null,
+                        "style": "PRIMARY_TEXT"
+                    },
+                    {
+                        "type": "UITextLine",
+                        "left": "Distance",
+                        "right": "1.36 km",
+                        "showOnlyOnExpanded": null,
+                        "tooltipText": null,
+                        "icon": null,
+                        "position": null,
+                        "style": "PRIMARY_TEXT"
+                    },
+                    {
+                        "type": "UITextLine",
+                        "left": "Initial wait time",
+                        "right": "1.0 min",
+                        "showOnlyOnExpanded": null,
+                        "tooltipText": null,
+                        "icon": null,
+                        "position": null,
+                        "style": "PRIMARY_TEXT"
+                    },
+                    {
+                        "type": "UITextLine",
+                        "left": "Duration",
+                        "right": "14.0 min",
+                        "showOnlyOnExpanded": null,
+                        "tooltipText": null,
+                        "icon": null,
+                        "position": null,
+                        "style": "PRIMARY_TEXT"
+                    }
+                ]
+            },
+            {
+                "type": "EarningsSection",
+                "lines": [
+                    {
+                        "type": "UITextLine",
+                        "left": "Total fare",
+                        "right": "AED 28.83",
+                        "showOnlyOnExpanded": null,
+                        "tooltipText": null,
+                        "icon": null,
+                        "position": null,
+                        "style": "PRIMARY_TEXT"
+                    },
+                    {
+                        "type": "UILineBreak",
+                        "style": "LIGHT_GREY_LINE",
+                        "showOnlyOnExpanded": false
+                    },
+                    {
+                        "type": "UITextLine",
+                        "left": "Taxes",
+                        "right": "AED -5.50",
+                        "showOnlyOnExpanded": null,
+                        "tooltipText": null,
+                        "icon": null,
+                        "position": null,
+                        "style": "PRIMARY_TEXT"
+                    },
+                    {
+                        "type": "UITextLine",
+                        "left": "Government tax",
+                        "right": "AED -0.50",
+                        "showOnlyOnExpanded": true,
+                        "tooltipText": null,
+                        "icon": null,
+                        "position": null,
+                        "style": "SECONDARY_TEXT"
+                    },
+                    {
+                        "type": "UITextLine",
+                        "left": "Regulator fee",
+                        "right": "AED -5.00",
+                        "showOnlyOnExpanded": true,
+                        "tooltipText": null,
+                        "icon": null,
+                        "position": null,
+                        "style": "SECONDARY_TEXT"
+                    },
+                    {
+                        "type": "UILineBreak",
+                        "style": "LIGHT_GREY_LINE",
+                        "showOnlyOnExpanded": false
+                    },
+                    {
+                        "type": "UITextLine",
+                        "left": "Careem fee",
+                        "right": "AED -5.16",
+                        "showOnlyOnExpanded": false,
+                        "tooltipText": "Careem fee is % Careem's charging per trip. Fee doesn't vary for different payment types. Careem fee doesn't apply for Refunds (tollgate charge) and Taxes",
+                        "icon": null,
+                        "position": null,
+                        "style": "PRIMARY_TEXT"
+                    },
+                    {
+                        "type": "UILineBreak",
+                        "style": "SOLID_BLACK_LINE",
+                        "showOnlyOnExpanded": false
+                    },
+                    {
+                        "type": "UITextLine",
+                        "left": "You received",
+                        "right": "AED 18.17",
+                        "showOnlyOnExpanded": false,
+                        "tooltipText": null,
+                        "icon": null,
+                        "position": null,
+                        "style": "BOLD_GREEN_TEXT"
+                    },
+                    {
+                        "type": "UILineBreak",
+                        "style": "LIGHT_GREY_LINE",
+                        "showOnlyOnExpanded": true
+                    },
+                    {
+                        "type": "UITextLine",
+                        "left": "Starting fare",
+                        "right": "AED 7.73",
+                        "showOnlyOnExpanded": true,
+                        "tooltipText": null,
+                        "icon": null,
+                        "position": null,
+                        "style": "SECONDARY_TEXT"
+                    },
+                    {
+                        "type": "UITextLine",
+                        "left": "Moving fare",
+                        "right": "AED 2.76",
+                        "showOnlyOnExpanded": true,
+                        "tooltipText": null,
+                        "icon": null,
+                        "position": null,
+                        "style": "SECONDARY_TEXT"
+                    },
+                    {
+                        "type": "UITextLine",
+                        "left": "Waiting fare",
+                        "right": "AED 8.19",
+                        "showOnlyOnExpanded": true,
+                        "tooltipText": null,
+                        "icon": null,
+                        "position": null,
+                        "style": "SECONDARY_TEXT"
+                    },
+                    {
+                        "type": "UITextLine",
+                        "left": "Government tax",
+                        "right": "AED -0.50",
+                        "showOnlyOnExpanded": true,
+                        "tooltipText": null,
+                        "icon": null,
+                        "position": null,
+                        "style": "SECONDARY_TEXT"
+                    },
+                    {
+                        "type": "UILineBreak",
+                        "style": "LIGHT_GREY_LINE",
+                        "showOnlyOnExpanded": false
+                    },
+                    {
+                        "type": "UIActionLine",
+                        "beforeIcon": "ACTION_ARROW_DOWN",
+                        "beforeText": "Show details",
+                        "afterIcon": "ACTION_ARROW_UP",
+                        "afterText": "Hide details",
+                        "style": null
+                    }
+                ]
+            },
+            {
+                "type": "PaymentDetailsSection",
+                "lines": [
+                    {
+                        "type": "UITextLine",
+                        "left": "This trip was paid by card",
+                        "right": "",
+                        "showOnlyOnExpanded": false,
+                        "tooltipText": null,
+                        "icon": "INFORMATION_GREEN",
+                        "position": "LEFT",
+                        "style": "BOLD_HEADING_TEXT"
+                    },
+                    {
+                        "type": "UITextLine",
+                        "left": "Note: Careem commission for Credit Card bookings is exactly the same as for Cash ones",
+                        "right": "",
+                        "showOnlyOnExpanded": false,
+                        "tooltipText": null,
+                        "icon": null,
+                        "position": null,
+                        "style": "SECONDARY_TEXT"
+                    },
+                    {
+                        "type": "UITextLine",
+                        "left": "You received",
+                        "right": "AED 18.17",
+                        "showOnlyOnExpanded": null,
+                        "tooltipText": null,
+                        "icon": null,
+                        "position": null,
+                        "style": "PRIMARY_TEXT"
+                    },
+                    {
+                        "type": "UILineBreak",
+                        "style": "LIGHT_GREY_LINE",
+                        "showOnlyOnExpanded": false
+                    },
+                    {
+                        "type": "UITextLine",
+                        "left": "Trip balance",
+                        "right": "AED 18.17",
+                        "showOnlyOnExpanded": false,
+                        "tooltipText": null,
+                        "icon": "GREY_WALLET",
+                        "position": "CENTER",
+                        "style": "BOLD_LARGE_BLACK_TEXT"
+                    }
+                ]
+            }
+        ],
+        "meta": {
+            "bookingId": 2075850906,
+            "verifiedDriver": true,
+            "routeId": 1418724514,
+            "tripVerified": true
+        }
+    }
+}

@@ -1,0 +1,19 @@
+curl 'https://fleet.yango.com/api/v1/reports/transactions/park/download-async?operation_id=ba746b251a80468bb2c87bb87c607c99' \
+  -H 'Accept: */*' \
+  -H 'Accept-Language: en-US,en;q=0.9' \
+  -H 'Connection: keep-alive' \
+  -H 'Content-Type: application/json' \
+  -H 'Cookie: _gcl_gs=2.1.k1$i1734253195$u67618628; _gcl_au=1.1.1037245405.1734253197; _tt_enable_cookie=1; _ttp=EC3N1h1hOppHOr41f9_sx9byZiH.tt.1; _gcl_aw=GCL.1734253198.CjwKCAiAmfq6BhAsEiwAX1jsZ5PCoqQ3Eo9HLaXwLstFjkZOZ679w7arcMuhtFw0GZsESRlCmaMxFhoCA1sQAvD_BwE; _ga=GA1.1.72436168.1734253198; gdpr=0; _fbp=fb.1.1734253198123.163459733139581386; _ym_uid=173425319882427919; _ym_d=1734253198; i=QEDHNMVkS3Ofh4NY9htReHMA7dtIAyFg519p5yQTAqLiNR7Ik0mNcUGVijvMz/sH2UozItOgjxvM4WSrD0JdDLUjTP8=; yandexuid=5777784371734253573; yashr=3623722451734253573; _uetvid=f56ef7c0bac211efafb4d1a3e04bf523; _ga_1XB1FENE2V=GS1.1.1734261911.2.1.1734261911.60.0.1591142373; _ym_isad=2; _ym_visorc=b; _yasc=9KSYHtfKABVsT/hfxcjKwFmRfypH0VSbbJnO2Keem7tQMh3xGq3MXNBWjf6Ub+yn28k=; Cookie_check=CheckCookieCheckCookie; Session_id=3:1734682652.5.2.1734253694729:FEfMXg:d6de.1.2:1|1726896726.-1.0.0:3.3:1734253694|2057608380.-1.0.0:3.2:105734.3:1734359428|1920958370.428958.2.0:17.2:428958.3:1734682652|60:10029060.947984.3vVHNVWZYwWSNvcNwop5jrg9DZc; sessar=1.1197.CiACC5Ym5Opb5aOOWxtzg_qOKC-Ywl4Phe-C2lNMwLPzQQ.ZkBkTmOvkL3RXdyN5Wxlr4TsSXnQVTgprfaLONFj5-o; sessionid2=3:1734682652.5.2.1734253694729:FEfMXg:d6de.1.2:1|1726896726.-1.0.0:3.3:1734253694|2057608380.-1.0.0:3.2:105734.3:1734359428|1920958370.428958.2.0:17.2:428958.3:1734682652|60:10029060.947984.fakesign0000000000000000000; yp=2050042652.udn.cDpzdGVwaGFuZTEzNzM4#2049719428.multib.1; ys=udn.cDpzdGVwaGFuZTEzNzM4; L=Vwl2UVN1WnRVDEhDX3d+VENgT3p1dwQFRQZSGhgkND9DWlJdTA==.1734682652.15988.349731.95f4ec0f7c1982c1efb0d7078647f8c6; yandex_login=stephane13738; park_id=c5cf968c4c2f4bbc947c8c0703b7e124' \
+  -H 'Language: en' \
+  -H 'Origin: https://fleet.yango.com' \
+  -H 'Referer: https://fleet.yango.com/reports/transactions/list?from=2024-12-12T00%3A00%3A00.000&to=2024-12-20T23%3A59%3A59.999&without_cash=true&park_id=c5cf968c4c2f4bbc947c8c0703b7e124' \
+  -H 'Sec-Fetch-Dest: empty' \
+  -H 'Sec-Fetch-Mode: cors' \
+  -H 'Sec-Fetch-Site: same-origin' \
+  -H 'User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36' \
+  -H 'X-Client-Version: fleet/13631' \
+  -H 'X-Park-Id: c5cf968c4c2f4bbc947c8c0703b7e124' \
+  -H 'sec-ch-ua: "Google Chrome";v="131", "Chromium";v="131", "Not_A Brand";v="24"' \
+  -H 'sec-ch-ua-mobile: ?0' \
+  -H 'sec-ch-ua-platform: "Windows"' \
+  --data-raw '{"query":{"park":{"transaction":{"event_at":{"from":"2024-12-12T00:00:00.000+04:00","to":"2024-12-21T00:00:00.000+04:00"},"without_cash":true}}},"charset":"utf-8-sig"}'
