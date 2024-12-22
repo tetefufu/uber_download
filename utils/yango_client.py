@@ -33,10 +33,10 @@ class YangoClient:
             "charset": "utf-8-sig"
         }
         
-        payload = '{"query":{"park":{"transaction":{"event_at":{"from":"2024-12-12T00:00:00.000+04:00","to":"2024-12-21T00:00:00.000+04:00"},"without_cash":true}}},"charset":"utf-8-sig"}'
+        # payload = '{"query":{"park":{"transaction":{"event_at":{"from":"2024-12-12T00:00:00.000+04:00","to":"2024-12-21T00:00:00.000+04:00"},"without_cash":true}}},"charset":"utf-8-sig"}'
         async with aiohttp.ClientSession(headers=self.headers) as session:
             logging.info(f"{url}")
-            async with session.post(url, data=payload) as response:  # Note: use 'data' to send raw JSON
+            async with session.post(url, json=payload) as response:  # Note: use 'data' to send raw JSON
                 logging.info(f"Response: {response.status} {response.reason} {url}")
                 response.raise_for_status()
                 return await response.json()
