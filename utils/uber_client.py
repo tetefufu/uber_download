@@ -103,13 +103,13 @@ class UberClient:
         return signed_url
 
 
-    def generate(self):
+    def generate(self, report_type):
         start_time_unix_millis, end_time_unix_millis, start_date_str, end_date_str = self.get_dates()
         data = {
             "operationName": "generateVsPaymentReport",
             "variables": {
                 "orgUUID": self.org_id,
-                "paymentReportType": "REPORT_TYPE_PAYMENTS_ORDER",
+                "paymentReportType": report_type,
                 "startDate": start_date_str,
                 "endDate": end_date_str,
                 "startTimeUnixMillis": str(start_time_unix_millis),
