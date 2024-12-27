@@ -7,12 +7,12 @@ import uuid
 
 import requests
 
-from download_report_careem import save_file
 from utils.config_utils import read_config
 from utils.creds import extract_cookie_value_yango
 from urllib.parse import quote
 
 from utils.date_utils import generate_dates_rolling_30
+from utils.file_utils import save_file
 from utils.format_utils import convert_to_dict_list
 from utils.log_utils import *
 from utils.yango_client import YangoClient
@@ -56,6 +56,8 @@ async def fetch_report_download_url(operation_id):
 def download_and_parse_csv(download_url, filename):
     base_path = config['output_folder']
     full_path = os.path.join(base_path, filename)
+    logging.info(f"{full_path=}")
+    logging.info(f"{base_path=}")
 
     os.makedirs(base_path, exist_ok=True)
 
@@ -77,7 +79,7 @@ async def get_all_transaction_details(client, transactions):
 
 
 async def main():
-    start_date, end_date = generate_dates_rolling_30()
+    start_date, end_date = generate_dates_rolling_30(config.get("yango_start_from", 60))
     operation_id = await start_report_generation("transactions", start_date, end_date)
     await wait_for_report_completion(operation_id)
     report_details = await fetch_report_download_url(operation_id)

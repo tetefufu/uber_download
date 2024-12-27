@@ -1,13 +1,12 @@
 import asyncio
-import csv
 from datetime import datetime
-import logging
 import os
 
 from utils.careem_client import CareemClient
 from utils.config_utils import read_config
 from utils.creds import extract_bearer_token
 
+from utils.file_utils import save_file
 from utils.log_utils import *
 
 bearer_token = extract_bearer_token()
@@ -55,28 +54,6 @@ async def get_trips_details_async(trips):
     driver_trips = await asyncio.gather(*tasks)
 
     return driver_trips
-
-
-def save_file(list_of_dicts, filepath):
-    logging.info(f"saving {filepath}")
-    if not list_of_dicts:
-        raise ValueError("The list of dictionaries is empty.")
-
-    header = []
-    seen_keys = set()
-
-    for dictionary in list_of_dicts:
-        for key in dictionary.keys():
-            if key not in seen_keys:
-                header.append(key)
-                seen_keys.add(key)
-
-
-    with open(filepath, mode='w', newline='', encoding='utf-8') as file:
-        writer = csv.DictWriter(file, fieldnames=header)
-        writer.writeheader()
-        writer.writerows(list_of_dicts)
-    logging.info(f"saved to file {filepath}")
 
 
 async def main():
