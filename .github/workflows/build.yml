@@ -13,11 +13,9 @@ jobs:
     runs-on: windows-latest
 
     steps:
-      # Checkout the repository
       - name: Checkout code
         uses: actions/checkout@v3
 
-      # Set up Python
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
@@ -54,3 +52,12 @@ jobs:
         with:
           name: uber
           path: dist/download_report_uber.exe
+
+      - name: Build executable
+        run: pyinstaller --onefile download_report_zed.py
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: zed
+          path: dist/download_report_zed.exe

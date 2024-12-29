@@ -1,0 +1,29 @@
+
+
+curl 'https://api.supplier.gozed.ae/api/supplier/report/supplierPayout' \
+  -H 'accept: application/json, text/plain, */*' \
+  -H 'accept-language: en-US,en;q=0.9' \
+  -H 'accesstoken: eyJhbGciO' \
+  -H 'content-type: application/json' \
+  -H 'origin: https://supplier.gozed.ae' \
+  -H 'priority: u=1, i' \
+  -H 'referer: https://supplier.gozed.ae/' \
+  -H 'sec-ch-ua: "Google Chrome";v="131", "Chromium";v="131", "Not_A Brand";v="24"' \
+  -H 'sec-ch-ua-mobile: ?0' \
+  -H 'sec-ch-ua-platform: "Windows"' \
+  -H 'sec-fetch-dest: empty' \
+  -H 'sec-fetch-mode: cors' \
+  -H 'sec-fetch-site: same-site' \
+  -H 'user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36' \
+  --data-raw '{"startDate":"2024-12-01 00:00:00","endDate":"2024-12-19 23:59:59"}'
+  
+{
+    "message": "Driver earning report created",
+    "data": {
+        "documentUrl": "https://zed-production.s3.me-central-1.amazonaws.com/4/19/1734762543122xtn0.csv?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA5FTZBNMJERAIICWN%2F20241221%2Fme-central-1%2Fs3%2Faws4_request&X-Amz-Date=20241221T062903Z&X-Amz-Expires=300&X-Amz-Signature=efb7b58c6faead3f296c80d22ca0dd037e008567d871deaf9be0c7d0e09ed7de&X-Amz-SignedHeaders=host"
+    }
+}
+
+---
+
+  
