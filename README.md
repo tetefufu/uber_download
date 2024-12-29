@@ -24,3 +24,10 @@ For careem - start from number
 - Reads creds from `curl_yango.txt`
 - Reads output folder from `config.yml`
 - Reads from x days (eg 30 or 60) from `config.yml`
+
+## Zed
+
+- Generates rolling 30 days
+- Reads creds from `curl.txt`
+- Reads output folder from `config.yml`
+- Reads from x days (eg 30 or 60) from `report_start_from` in `config.yml`
