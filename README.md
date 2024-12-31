@@ -23,7 +23,7 @@ For careem - start from number
 - Generates rolling 30 days
 - Reads creds from `curl_yango.txt`
 - Reads output folder from `config.yml`
-- Reads from x days (eg 30 or 60) from `config.yml`
+- Reads from x days (eg 30 or 60) from `yango_start_from` in `config.yml`
 
 ## Zed
 

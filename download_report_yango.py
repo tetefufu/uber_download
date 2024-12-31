@@ -10,6 +10,7 @@ import requests
 from utils.config_utils import read_config
 from utils.creds import extract_cookie_value_yango
 from urllib.parse import quote
+from asyncio import Semaphore, gather
 
 from utils.date_utils import generate_dates_rolling_30
 from utils.file_utils import save_file
@@ -64,18 +65,22 @@ def download_and_parse_csv(download_url, filename):
     return save_csv_content(download_url, full_path)
 
 
-async def fetch_transaction_details(client, transaction):
-    order_id = transaction.get("Order ID")
-    driver_profile_id = transaction.get("Driver ID")
-    if order_id and driver_profile_id and len(order_id) > 10 and len(driver_profile_id) > 10:
-        detail = await client.get_order_details(order_id, driver_profile_id, tz="Asia/Dubai")
-        return transaction | detail
-    return transaction
+async def fetch_transaction_details(semaphore, client, transaction):
+    async with semaphore:  # Limit the concurrency
+        order_id = transaction.get("Order ID")
+        driver_profile_id = transaction.get("Driver ID")
+        if order_id and driver_profile_id and len(order_id) > 10 and len(driver_profile_id) > 10:
+            detail = await client.get_order_details(order_id, driver_profile_id, tz="Asia/Dubai")
+            return transaction | detail
+        return transaction
 
-async def get_all_transaction_details(client, transactions):
-    tasks = [fetch_transaction_details(client, transaction) for transaction in transactions]
-    transactions_details = await asyncio.gather(*tasks)
+
+async def get_all_transaction_details(client, transactions, max_concurrent_tasks=10):
+    semaphore = Semaphore(max_concurrent_tasks)
+    tasks = [fetch_transaction_details(semaphore, client, transaction) for transaction in transactions]
+    transactions_details = await gather(*tasks)
     return transactions_details
+
 
 
 async def main():
@@ -89,7 +94,7 @@ async def main():
     logging.info("CSV content downloaded and parsed successfully.")
     
     transactions = convert_to_dict_list(csv_content)
-    transactions_details = await get_all_transaction_details(client, transactions)
+    transactions_details = await get_all_transaction_details(client, transactions, max_concurrent_tasks=config.get("threads", 10))
 
     logging.info("CSV content downloaded and parsed successfully.")
 

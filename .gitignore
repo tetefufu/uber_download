@@ -63,6 +63,7 @@ Thumbs.db
 
 # credentials
 curl.txt
+curl_yango.txt
 
 # exe
 *.spec
