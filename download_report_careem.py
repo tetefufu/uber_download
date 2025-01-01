@@ -8,6 +8,7 @@ from utils.creds import extract_bearer_token
 
 from utils.file_utils import save_file
 from utils.log_utils import *
+from asyncio import Semaphore
 
 bearer_token = extract_bearer_token()
 config = read_config("config.yml")
@@ -28,15 +29,20 @@ async def get_trips_sync(drivers):
     return driver_trips
 
 
-async def get_trips_async(drivers):
+async def get_trips_async(drivers, thread_count=1):
+    semaphore = Semaphore(thread_count)
+
+    async def limited_get_trips(driver, number):
+        async with semaphore:
+            return await client.get_trips(driver, number)
+
     tasks = [
-        client.get_trips(driver, number)
+        limited_get_trips(driver, number)
         for driver in drivers
         for number in range(config['report_start_from'])
     ]
-    
-    results = await asyncio.gather(*tasks)
 
+    results = await asyncio.gather(*tasks)
     driver_trips = [trip for result in results for trip in result]
     return driver_trips
 
@@ -49,8 +55,14 @@ async def get_trips_details_sync(trips):
     return driver_trips
 
 
-async def get_trips_details_async(trips):
-    tasks = [client.get_trip_detail(trip) for trip in trips]
+async def get_trips_details_async(trips, thread_count=1):
+    semaphore = Semaphore(thread_count)
+
+    async def limited_get_trip_detail(trip):
+        async with semaphore:
+            return await client.get_trip_detail(trip)
+
+    tasks = [limited_get_trip_detail(trip) for trip in trips]
     driver_trips = await asyncio.gather(*tasks)
 
     return driver_trips
@@ -58,8 +70,8 @@ async def get_trips_details_async(trips):
 
 async def main():
     captain_ids = await get_captain_ids()
-    trips = await get_trips_async(captain_ids)
-    trips_details = await get_trips_details_async(trips)
+    trips = await get_trips_async(captain_ids, thread_count=config.get("threads", 10))
+    trips_details = await get_trips_details_async(trips, thread_count=config.get("threads", 10))
 
     filename = f"{datetime.now().strftime('%Y%m%d_%H%M')}_careem_downloader"
     base_path = config['output_folder']
