@@ -31,3 +31,14 @@ For careem - start from number
 - Reads creds from `curl.txt`
 - Reads output folder from `config.yml`
 - Reads from x days (eg 30 or 60) from `report_start_from` in `config.yml`
+
+## Uber
+
+- Generates multiple reports
+- Can read `reports` (see below). If missing, generates only REPORT_TYPE_PAYMENTS_ORDER
+
+```
+reports:
+  - REPORT_TYPE_PAYMENTS_ORDER
+  - REPORT_TYPE_PAYMENTS_ORGANIZATION
+```

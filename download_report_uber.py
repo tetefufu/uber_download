@@ -61,7 +61,10 @@ def generate_report_type(report_type):
 
 
 if __name__ == "__main__":
-    generate_report_type("REPORT_TYPE_PAYMENTS_ORDER")
-    generate_report_type("REPORT_TYPE_PAYMENTS_ORGANIZATION")
-    generate_report_type("REPORT_TYPE_PAYMENTS_DRIVER")
-    
+    if 'reports' in config:
+        reports = config['reports']
+        for report in reports:
+            generate_report_type(report)
+    else:
+        generate_report_type("REPORT_TYPE_PAYMENTS_ORDER")
+        
