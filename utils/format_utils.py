@@ -61,7 +61,7 @@ from datetime import datetime
 def convert_timestamps_to_iso(data):
     """
     Recursively converts Unix timestamps in a dictionary or list of dictionaries
-    to ISO 8601 datetime strings.
+    to ISO 8601 datetime strings, but only if the date is within 2024.
     
     :param data: dict or list of dicts to process
     :return: The updated data with timestamps converted to ISO datetime strings
@@ -70,8 +70,15 @@ def convert_timestamps_to_iso(data):
         # Check if the value is a valid Unix timestamp (integer or str that looks like one)
         if isinstance(value, (int, str)) and str(value).isdigit():
             try:
-                # Attempt to convert the value to an ISO datetime
-                return datetime.utcfromtimestamp(int(value)).isoformat() + "Z"
+                timestamp = int(value)
+                # Convert timestamp to datetime
+                date = datetime.utcfromtimestamp(timestamp)
+                
+                # Only convert if the date is within the year 2024
+                if date.year >= 2024:
+                    return date.isoformat() + "Z"
+                else:
+                    return value  # Leave value as is if not in 2024
             except (ValueError, OSError):
                 # If conversion fails, return the value as is
                 return value
@@ -84,3 +91,4 @@ def convert_timestamps_to_iso(data):
         return [convert_timestamps_to_iso(item) for item in data]
     else:
         return data
+

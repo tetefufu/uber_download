@@ -27,7 +27,7 @@ if __name__ == "__main__":
     # Print date range
     print(f"Generating report for the date range: {start_date.strftime('%Y-%m-%d')} to {end_date.strftime('%Y-%m-%d')}")
 
-    orders = bolt_client.fleet_integration_v1_get_fleet_orders(offset=0, limit=5, start_ts=start_ts, end_ts=end_ts)
+    orders = bolt_client.fleet_integration_v1_get_fleet_orders(offset=0, limit=1000, start_ts=start_ts, end_ts=end_ts)
     orders_flat = flatten_list_json(orders['data']['orders'])
     orders_flat = convert_timestamps_to_iso(orders_flat)
 
