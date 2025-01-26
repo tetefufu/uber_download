@@ -42,3 +42,9 @@ reports:
   - REPORT_TYPE_PAYMENTS_ORDER
   - REPORT_TYPE_PAYMENTS_ORGANIZATION
 ```
+
+## Bolt
+
+- Generates orders
+- Reads from x days (31 max) from `report_start_from` in `config.yml`
+- Read api creds from curl.txt
