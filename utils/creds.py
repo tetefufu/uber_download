@@ -1,6 +1,21 @@
 
 import re
 
+import yaml
+
+def read_api_keys():
+    valid_lines = []
+    pattern = re.compile(r"^\s*\w+\s*:\s*.+")  # Matches lines in the format 'key: value'
+
+    with open('curl.txt', 'r') as file:
+        for line in file:
+            if pattern.match(line):
+                valid_lines.append(line)
+
+    # Combine the valid lines into a single string
+    valid_yaml = "\n".join(valid_lines)
+    return yaml.safe_load(valid_yaml)
+
 def extract_cookie_value_yango():
     # Open the curl.txt file from the same directory as the script
     with open('curl_yango.txt', 'r') as file:
