@@ -12,7 +12,12 @@ from asyncio import Semaphore
 
 bearer_token = extract_bearer_token()
 config = read_config("config.yml")
-client = CareemClient(org_id=1, start_from=config['report_start_from'], bearer_token=bearer_token)
+client = CareemClient(
+    org_id=1, 
+    start_from=config['report_start_from'], 
+    bearer_token=bearer_token,
+    delay=config.get('delay', 0)
+)
 
 
 async def get_captain_ids():

@@ -1,3 +1,4 @@
+import asyncio
 import aiohttp
 
 from datetime import datetime, timedelta
@@ -9,7 +10,7 @@ from flatten_json import flatten
 
 
 class CareemClient:
-    def __init__(self, org_id, start_from, bearer_token):
+    def __init__(self, org_id, start_from, bearer_token, delay=0):
         self.headers = {
             "Authorization": "Bearer " + bearer_token,
             "Accept": "application/json, text/plain, */*",
@@ -19,6 +20,7 @@ class CareemClient:
         self.captain_url = 'https://captain.careem.com/api'
         self.org_id = org_id
         self.start_from = start_from
+        self.delay = delay
 
     def filter_out_lists_recursive(self, json_data):
         """
@@ -94,6 +96,8 @@ class CareemClient:
 
 
     async def get_trips(self, captain_id, cycle_number = 0):
+        if self.delay:
+            await asyncio.sleep(self.delay)
         logging.info(f'get_trips {captain_id=} {cycle_number=}')
         encoded_view_params = quote(f'{{"cycleIdx": {cycle_number}}}', safe=":")
         url = f"{self.captain_url}/transaction/{captain_id}?cycleNumber={cycle_number}&viewParams={encoded_view_params}&viewType=cycle"
@@ -102,6 +106,8 @@ class CareemClient:
             "accept": "application/json, text/plain, */*",
             "authcaptainid": str(captain_id),
             "authtoken": f"Bearer {self.bearer_token}",
+            "authorization": "Bearer " + self.bearer_token,
+            
         }
         
         async with aiohttp.ClientSession(headers=self.headers) as session:
@@ -133,6 +139,8 @@ class CareemClient:
 
 
     async def get_drivers(self):
+        if self.delay:
+            await asyncio.sleep(self.delay)
         start_time_unix_millis, end_time_unix_millis, start_date_str, end_date_str = self.get_dates()
         logging.info(f"Gettings driver")
 

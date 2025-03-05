@@ -13,10 +13,15 @@ pyinstaller --onefile download_report_careem.py
 
 config.yml
 
-For careem - start from number
+## Careem
+
+start from number
 
 - 1 is min
 - 3 to go back 3 weeks
+
+optionally to slow requests add
+`delay: 5` e.g. for 5 second delay between requests
 
 ## Yango
 
