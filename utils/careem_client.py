@@ -64,6 +64,8 @@ class CareemClient:
 
 
     async def get_trip_detail(self, trip):
+        if self.delay:
+            await asyncio.sleep(self.delay)
         captain_id = trip['captainProfile_captainProfileDto_captainId']
         trip_id = trip['transactionId']
         url = f"{self.captain_url}/trip-receipt/{trip_id}/en"
