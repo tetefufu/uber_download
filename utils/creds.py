@@ -33,6 +33,22 @@ def extract_cookie_value_yango():
         return cookie_value
     else:
         return None  # Return None if no match found
+    
+def extract_cookies_uber():
+    with open('curl.txt', 'r') as file:
+        curl_text = file.read()
+    match = re.search(r"-b '([^']+)'", curl_text)
+    if not match:
+        return {}
+    
+    cookies = match.group(1)
+    cookie_dict = {}
+    for pair in cookies.split('; '):
+        if '=' in pair:
+            key, value = pair.split('=', 1)
+            cookie_dict[key] = value
+    
+    return cookie_dict
 
 def extract_cookie_value():
     # Open the curl.txt file from the same directory as the script

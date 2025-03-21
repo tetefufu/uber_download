@@ -5,12 +5,12 @@ import time
 import requests
 
 from utils.config_utils import read_config
-from utils.creds import extract_cookie_value
+from utils.creds import extract_cookie_value, extract_cookies_uber
 from utils.uber_client import UberClient
 
 from utils.log_utils import *
 
-cookie_str = extract_cookie_value()
+cookie_str = extract_cookies_uber()
 config = read_config("config.yml")
 client = UberClient(org_id=config['org_id'], start_from=config['report_start_from'], cookie_str=cookie_str)
 

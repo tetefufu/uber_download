@@ -12,9 +12,9 @@ class UberClient:
         self.headers = {
             'accept': '*/*',
             'content-type': 'application/json',
-            'cookie': cookie_str,
             'x-csrf-token': 'x',
         }
+        self.cookies = cookie_str
         self.url = 'https://supplier.uber.com/graphql'
         self.org_id = org_id
         self.start_from = start_from
@@ -66,7 +66,7 @@ class UberClient:
             '''
         }
 
-        response = requests.post(self.url, headers=self.headers, json=data)
+        response = requests.post(self.url, headers=self.headers, json=data, cookies=self.cookies)
         response.raise_for_status()
         response_data = response.json()
         logging.info(response_data)
@@ -93,7 +93,7 @@ class UberClient:
             """
         }
 
-        response = requests.post(self.url, headers=self.headers, json=data)
+        response = requests.post(self.url, headers=self.headers, json=data, cookies=self.cookies)
         response.raise_for_status()
         response_data = response.json()
         logging.info(response_data)
@@ -132,7 +132,7 @@ class UberClient:
             """
         }
 
-        response = requests.post(self.url, headers=self.headers, json=data)
+        response = requests.post(self.url, headers=self.headers, json=data, cookies=self.cookies)
         response.raise_for_status()
         response_data = response.json()
         logging.info(response_data)
